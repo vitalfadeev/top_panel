@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/top_panel
+top_panel.so
+top_panel.dylib
+top_panel.dll
+top_panel.a
+top_panel.lib
+top_panel-test-*
+*.exe
+*.o
+*.obj
+*.lst

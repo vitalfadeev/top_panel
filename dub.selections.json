@@ -1,0 +1,9 @@
+{
+	"fileVersion": 1,
+	"versions": {
+		"bindbc-common": {"path":"deps/bindbc-common"},
+		"bindbc-loader": {"path":"deps/bindbc-loader"},
+		"bindbc-sdl": {"path":"deps/bindbc-sdl"},
+		"bindbc-sdlgfx": {"path":"deps/bindbc-sdlgfx"}
+	}
+}

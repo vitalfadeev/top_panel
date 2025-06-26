@@ -1,0 +1,23 @@
+{
+	"name"         : "top_panel",
+	"authors"      : ["vf"],
+	"copyright"    : "Copyright © 2025, vf",
+	"description"  : "A minimal D application.",
+	"license"      : "proprietary",
+	"dflags"       : [ "-mixin=mixins.d" ],
+	"buildOptions" : ["ignoreDeprecations"],
+	"configurations": [
+		{
+			"name": "linux",
+			"platforms"      : ["linux"],
+			"targetType"     : "executable",
+			"dependencies": {
+				"select"     : {"path":"deps/select"},
+			},			
+			"versions" : ["GL_AllowDeprecated", "GL_ES_2"],
+		},
+	],
+	"subConfigurations": {
+		"bindbc-opengl": "dynamicBC"
+	},
+}

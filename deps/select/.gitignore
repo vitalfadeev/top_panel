@@ -1,0 +1,16 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/select
+select.so
+select.dylib
+select.dll
+select.a
+select.lib
+select-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst
