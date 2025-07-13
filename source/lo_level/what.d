@@ -65,24 +65,19 @@ version (LIBINPUT) {  // libinput
             GESTURE_PINCH_UPDATE    = LIBINPUT_EVENT_GESTURE_PINCH_UPDATE,
             GESTURE_PINCH_END       = LIBINPUT_EVENT_GESTURE_PINCH_END,
             _                       = NONE,  // 0
-            APP                     = 1000,  // 16384
-            START                   = APP + 1,
-            DRAW                    = APP + 2,
-            //APP                     = lo_level.appinput.Event.Type.APP,  // 16384
-            //START                   = lo_level.appinput.Event.Type.START,
-            //DRAW                    = lo_level.appinput.Event.Type.DRAW,
+            APP                     = lo_level.appinput.Event.Type.APP,  // 16384
+            START                   = lo_level.appinput.Event.Type.START,
+            DRAW                    = lo_level.appinput.Event.Type.DRAW,
         }
 
         bool
         is_app () {
             return (type >= Type.APP);
-            //return ((type & Type.APP) != 0);
         }
 
         bool
         is_input () {
             return (type > Type.NONE) && (type < Type.APP);
-            //return ((type & Type.APP) == 0) && (type  != Type.NONE);
         }
 
         string

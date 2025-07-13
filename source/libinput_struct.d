@@ -197,7 +197,7 @@ Event {
         switch (type) {
             case LIBINPUT_EVENT_DEVICE_ADDED:
             case LIBINPUT_EVENT_DEVICE_REMOVED:
-                return format!"%s: %s added" (
+                return format!"%s: %s" (
                     type, 
                     device.name.to!string);
             case LIBINPUT_EVENT_KEYBOARD_KEY:

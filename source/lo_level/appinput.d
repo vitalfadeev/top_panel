@@ -29,7 +29,7 @@ Event {
     enum 
     Type : ushort {
         _                   = 0,     
-        APP                 = 1000,  // 16384
+        APP                 = 2^^14,  // 16384
         START               = APP + 1,
         DRAW                = APP + 2,
     }

@@ -13,3 +13,4 @@ top_panel-test-*
 *.o
 *.obj
 *.lst
+mixins.d
