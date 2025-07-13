@@ -1,5 +1,8 @@
 module see;
 
+import loc;
+import e;
+
 
 mixin template 
 See (T,What) {
@@ -9,7 +12,7 @@ See (T,What) {
     see (What what) {
         import std.stdio : writeln;
         writeln ("E.see ()");
-        if (able (what)) 
+        if (can (what)) 
         if (auto action = (what in brain))
             action ();
 
@@ -34,3 +37,5 @@ See (T,What) {
         }
     }
 }
+
+

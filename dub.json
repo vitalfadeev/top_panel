@@ -14,7 +14,9 @@
 			"dependencies": {
 				"select"     : {"path":"deps/select"},
 			},			
-			"versions" : ["GL_AllowDeprecated", "GL_ES_2"],
+			"versions"       : ["GL_AllowDeprecated", "GL_ES_2", "LIBINPUT"],
+			"libs-posix"     : ["libinput","libudev"],
+			"dflags"         : ["-preview=dip1000"]
 		},
 	],
 	"subConfigurations": {

@@ -5,6 +5,101 @@ import std.stdio : writeln,File;
 
 
 version (linux) {
+version (LIBINPUT) {
+    auto
+    Whats () {
+        return _Whats (null);
+    }
+    struct
+    _Whats {
+        // 2 source
+        //  - app       -> ...
+        //  - libinput  -> Event
+        // read ALL app events
+        // then read 1 libinput event
+        import libinput_struct   : LibInput;
+        import lo_level.appinput : AppInput;
+        import lo_level.appinput : AppEvent = Event;
+        LibInput libinput;
+        AppInput appinput;
+        Source  _source;
+        //What     _front;
+
+        // front
+        // back
+        // empty
+        // popFront
+        // popBack
+        // opOpAssign (string op : "~")
+
+        this (void* _) {
+            _init ();
+        }
+
+        void
+        _init () {
+            // appinput empty
+            // libinput empty
+            // setup front
+            libinput = LibInput (null);
+            appinput = AppInput ();
+            // APP_START
+            appinput ~= AppEvent (AppEvent.Type.START);
+        }
+
+        bool
+        empty () {
+            if (!appinput.empty) {
+                _source = Source.APP;
+                return false;
+            }
+
+            if (!libinput.empty) {  // wait
+                _source = Source.INPUT;
+                return false;
+            }
+
+            return true;
+        }
+
+        What
+        front () {
+            // read all appinput
+            // then one libinput
+            final
+            switch (_source) {
+                case Source.APP   : return What (appinput.front);
+                case Source.INPUT : return What (libinput.front);
+            }
+        }
+
+        void
+        popFront () {
+            final
+            switch (_source) {
+                case Source.APP   : appinput.popFront (); break;
+                case Source.INPUT : libinput.popFront (); break;
+            }
+        }
+
+        void
+        opOpAssign (string op : "~", What) (What what) {
+            if (what.is_app)
+                appinput ~= what._app;
+            else
+            if (what.is_input)
+                libinput ~= what._input;
+        }
+    }
+
+    enum
+    Source {
+        APP,
+        INPUT,
+    }
+}
+else 
+version (EVDEV) {
     auto
     Whats () {
         return new _Whats ();
@@ -123,6 +218,7 @@ version (linux) {
             super (s);
         }
     }
+}
 }
 else
 version (SDL) {

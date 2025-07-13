@@ -97,6 +97,7 @@ auto
 WalkChilds (E) (E e) {
     return _WalkChilds!E (e);
 }
+alias childs = WalkChilds;
 struct
 _WalkChilds (E) {
     E e;

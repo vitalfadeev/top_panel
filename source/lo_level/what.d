@@ -1,7 +1,107 @@
 module lo_level.what;
 
+import std.stdio : writefln;
+
 
 version (linux) {  // evdev
+version (LIBINPUT) {  // libinput
+    import libinput_d;
+    import libinput_struct;
+    import lo_level.appinput;
+    //import libinput_struct : LibInput,Event;
+
+    struct
+    What {
+        // ushort
+        // libinput_event*
+        //   ushort
+        //   void*
+        Type                     type;
+        union {
+        lo_level.appinput.Event _app;
+          libinput_struct.Event _input;  // (event = libinput_get_event (li)) != null
+        }
+
+        this (Type type) {
+            this.type = type;
+        }
+
+        this (lo_level.appinput.Event event) {
+            import std.conv : to;
+            this.type = event.type.to!(ushort).to!(Type);
+            this._app = event;
+        }
+
+        this (libinput_struct.Event event) {
+            import std.conv : to;
+            this.type   = event.type.to!(ushort).to!(Type);
+            this._input = event;
+        }
+
+        //Type type () { return _event.type; }  // *(libinput_event* _event).type
+
+        enum
+        Type : ushort {
+            NONE                    = LIBINPUT_EVENT_NONE,
+            DEVICE_ADDED            = LIBINPUT_EVENT_DEVICE_ADDED,
+            DEVICE_REMOVED          = LIBINPUT_EVENT_DEVICE_REMOVED,
+            KEYBOARD_KEY            = LIBINPUT_EVENT_KEYBOARD_KEY,
+            POINTER_MOTION          = LIBINPUT_EVENT_POINTER_MOTION,
+            POINTER_MOTION_ABSOLUTE = LIBINPUT_EVENT_POINTER_MOTION_ABSOLUTE,
+            POINTER_BUTTON          = LIBINPUT_EVENT_POINTER_BUTTON,
+            POINTER_AXIS            = LIBINPUT_EVENT_POINTER_AXIS,
+            TOUCH_DOWN              = LIBINPUT_EVENT_TOUCH_DOWN,
+            TOUCH_UP                = LIBINPUT_EVENT_TOUCH_UP,
+            TOUCH_MOTION            = LIBINPUT_EVENT_TOUCH_MOTION,
+            TOUCH_CANCEL            = LIBINPUT_EVENT_TOUCH_CANCEL,
+            TABLET_TOOL_AXIS        = LIBINPUT_EVENT_TABLET_TOOL_AXIS,
+            TABLET_TOOL_PROXIMITY   = LIBINPUT_EVENT_TABLET_TOOL_PROXIMITY,
+            TABLET_TOOL_TIP         = LIBINPUT_EVENT_TABLET_TOOL_TIP,
+            TABLET_TOOL_BUTTON      = LIBINPUT_EVENT_TABLET_TOOL_BUTTON,
+            GESTURE_SWIPE_BEGIN     = LIBINPUT_EVENT_GESTURE_SWIPE_BEGIN,
+            GESTURE_SWIPE_UPDATE    = LIBINPUT_EVENT_GESTURE_SWIPE_UPDATE,
+            GESTURE_SWIPE_END       = LIBINPUT_EVENT_GESTURE_SWIPE_END,
+            GESTURE_PINCH_BEGIN     = LIBINPUT_EVENT_GESTURE_PINCH_BEGIN,
+            GESTURE_PINCH_UPDATE    = LIBINPUT_EVENT_GESTURE_PINCH_UPDATE,
+            GESTURE_PINCH_END       = LIBINPUT_EVENT_GESTURE_PINCH_END,
+            _                       = NONE,  // 0
+            APP                     = 1000,  // 16384
+            START                   = APP + 1,
+            DRAW                    = APP + 2,
+            //APP                     = lo_level.appinput.Event.Type.APP,  // 16384
+            //START                   = lo_level.appinput.Event.Type.START,
+            //DRAW                    = lo_level.appinput.Event.Type.DRAW,
+        }
+
+        bool
+        is_app () {
+            return (type >= Type.APP);
+            //return ((type & Type.APP) != 0);
+        }
+
+        bool
+        is_input () {
+            return (type > Type.NONE) && (type < Type.APP);
+            //return ((type & Type.APP) == 0) && (type  != Type.NONE);
+        }
+
+        string
+        toString () {
+            import std.format : format;
+            import std.conv   : to;
+
+            if (is_app)
+                return format!"APP   : %s: %s" (type,_app);
+            else
+            if (is_input)
+                return format!"INPUT : %s: %s" (type,_input);
+            else
+                return format!"_     : %s    " (type);
+        }
+    }
+}
+else
+version (EVDEV) {
     import lo_level.input_event_codes;  // EV_, SYN_, KEY_, BTN_, SW_, MSC_, ABS_, LED_, REP_, SND_
 
     class
@@ -55,6 +155,7 @@ version (linux) {  // evdev
 
     alias time_t      = ulong;  // c_long = 'ulong' on 64-bit systen
     alias suseconds_t = ulong;
+} // EVDEV
 }
 else
 version (Win64) {
