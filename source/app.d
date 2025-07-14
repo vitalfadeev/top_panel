@@ -2,7 +2,7 @@ import std.stdio;
 import std.conv;
 import e     : E,CanClick;
 import whats : Whats;
-import what  : What;
+import what  : What,AppEvent;
 import loop  : loop;
 import tree  : WalkTree,WalkChilds,childs;
 
@@ -38,8 +38,11 @@ Main : CanClick {
 	What
 	see (What what) {
 		writefln ("%s", what);
-		if (what.type == What.Type.POINTER_BUTTON)
-			return What (What.Type.DRAW);
+		if (what.type == What.Type.POINTER_BUTTON) {
+			// return What (What.Type.DRAW);
+			// return What (AppEvent (AppEvent.Type.DRAW));
+			return What (AppEvent.Type.DRAW);
+		}
 		else
 			return What ();
 	}

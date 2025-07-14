@@ -1,5 +1,3 @@
-module what;
-
 import appinput : __Event;
 
 alias What = __Event!AppEvent;

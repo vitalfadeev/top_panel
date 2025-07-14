@@ -1,5 +1,3 @@
-module whats;
-
 auto
 Whats () {
     import appinput : Events;
