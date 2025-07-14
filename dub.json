@@ -13,9 +13,10 @@
 			"targetType"     : "executable",
 			"dependencies": {
 				"select"     : {"path":"deps/select"},
+				"loop"       : {"path":"deps/loop"},
+				"appinput"   : {"path":"deps/appinput"},
 			},			
 			"versions"       : ["GL_AllowDeprecated", "GL_ES_2", "LIBINPUT"],
-			"libs-posix"     : ["libinput","libudev"],
 			"dflags"         : ["-preview=dip1000"]
 		},
 	],

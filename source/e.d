@@ -6,7 +6,7 @@ import tree;
 import loc;
 import len;
 import hit;
-import lo_level.what;
+import what;
 
 
 class
@@ -62,7 +62,9 @@ CanClick : CanShape {
 
     bool
     is_left_btn (What what) {
-        import lo_level.input_event_codes;
+        //import input_event_codes : BTN_LEFT,LIBINPUT_BUTTON_STATE_PRESSED;
+        enum LIBINPUT_BUTTON_STATE_PRESSED = 1;
+        enum BTN_LEFT = 0x110;
 
         if (what.type == What.Type.POINTER_BUTTON) {
             auto _pointer = what._input.pointer;
@@ -79,7 +81,7 @@ CanClick : CanShape {
 
     bool
     is_pointer_over (What what) {
-        import lo_level.input_event_codes;
+        //import input_event_codes;
 
         if (what.type == What.Type.POINTER_BUTTON ||
             what.type == What.Type.POINTER_MOTION ||

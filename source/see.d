@@ -1,5 +1,3 @@
-module see;
-
 import loc;
 import e;
 

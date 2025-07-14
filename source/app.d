@@ -1,11 +1,10 @@
 import std.stdio;
 import std.conv;
-import e : E,CanClick;
-import lo_level.whats;
-import lo_level.what;
-import lo_level.see;
-import hi_level.main_loop;
-import tree : WalkTree,WalkChilds,childs;
+import e     : E,CanClick;
+import whats : Whats;
+import what  : What;
+import loop  : loop;
+import tree  : WalkTree,WalkChilds,childs;
 
 
 void 
@@ -25,12 +24,10 @@ main () {
 	{
 		// tree
 		auto main_e = new Main ();
-		//auto button = new Button ();
-		//main_e.add_dr (button);
 
 		// main loop
 		auto whats = Whats ();
-		main_loop (whats,&main_e.see);
+		loop (whats,&main_e.see);
 	}
 }
 
@@ -40,16 +37,11 @@ Main : CanClick {
 	override
 	What
 	see (What what) {
-		import lo_level.appinput : AppEvent = Event;
-		import libinput_d        : LIBINPUT_EVENT_POINTER_BUTTON;
-
 		writefln ("%s", what);
-		if (what.type == What.Type.POINTER_BUTTON){
-		//if (what.type == What.Type.INPUT && what._input.type == LIBINPUT_EVENT_POINTER_BUTTON){
-			return What (AppEvent (AppEvent.Type.DRAW));
-		}
-		
-		return What ();
+		if (what.type == What.Type.POINTER_BUTTON)
+			return What (What.Type.DRAW);
+		else
+			return What ();
 	}
 }
 
