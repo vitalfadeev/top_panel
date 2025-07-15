@@ -1,0 +1,31 @@
+{
+    "name": "texture",
+    "authors": [
+        "Remi Thebault"
+    ],
+    "description": "gfx-d texture example",
+    "copyright": "Copyright © 2016, Remi Thebault",
+    "license": "MIT",
+    "targetType": "executable",
+    "sourcePaths": [
+        "source", "../common"
+    ],
+    "dependencies": {
+        "gfx:graal": {
+            "path": "../.."
+        },
+        "gfx:window": {
+            "path": "../.."
+        },
+        "gfx:genmesh": {
+            "path": "../.."
+        },
+        "img": {
+            "path": "../../3rdparty/img-d"
+        },
+        "gl3n": "~>1.3.1"
+    },
+    "preGenerateCommands-linux": [
+        "bash $PACKAGE_DIR/../gen_example_spirv.sh $PACKAGE_DIR"
+    ]
+}

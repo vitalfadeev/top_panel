@@ -1,0 +1,3 @@
+[submodule "3rdparty/img-d"]
+	path = 3rdparty/img-d
+	url = https://github.com/rtbo/img-d.git

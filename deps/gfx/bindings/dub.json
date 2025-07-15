@@ -1,0 +1,9 @@
+{
+    "name": "bindings",
+    "authors": [
+        "Rémi Thebault"
+    ],
+    "description": "Foundation for bindings to C libraries",
+    "copyright": "Copyright © 2016, Rémi Thebault",
+    "license": "MIT"
+}

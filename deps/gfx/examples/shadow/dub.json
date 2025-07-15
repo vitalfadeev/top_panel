@@ -1,0 +1,30 @@
+{
+    "name": "shadow",
+    "authors": [
+        "Remi Thebault"
+    ],
+    "description": "gfx-d shadow example",
+    "copyright": "Copyright © 2018, Remi Thebault",
+    "license": "MIT",
+    "targetType": "executable",
+    "sourcePaths": [
+        "source", "../common"
+    ],
+    "dependencies": {
+        "gfx:graal": {
+            "path": "../.."
+        },
+        "gfx:math": {
+            "path": "../.."
+        },
+        "gfx:window": {
+            "path": "../.."
+        },
+        "gfx:genmesh": {
+            "path": "../.."
+        }
+    },
+    "preGenerateCommands-linux": [
+        "bash $PACKAGE_DIR/../gen_example_spirv.sh $PACKAGE_DIR"
+    ]
+}

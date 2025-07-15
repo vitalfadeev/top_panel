@@ -1,0 +1,37 @@
+{
+	"name": "server",
+	"authors": [
+		"Rémi Thebault"
+	],
+	"description": "D bindings to wayland-server",
+	"copyright": "Copyright © 2017, Rémi Thebault",
+	"license": "MIT",
+	"preGenerateCommands": [
+		"bash $PACKAGE_DIR/gen_protocol.sh"
+	],
+	"sourcePaths": [
+		"source",
+		"../common"
+	],
+	"sourceFiles": [
+		"source/wayland/server/protocol.d"
+	],
+	"importPaths": [
+		"source",
+		"../common"
+	],
+	"configurations": [
+		{
+			"name": "static",
+			"versions": ["WlStatic"],
+			"libs": ["wayland-server"]
+		},
+		{
+			"name": "dynamic",
+			"versions": ["WlDynamic"],
+			"dependencies": {
+				"derelict-util": "~>2.0.0"
+			}
+		}
+	]
+}

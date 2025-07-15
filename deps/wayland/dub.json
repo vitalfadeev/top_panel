@@ -1,0 +1,23 @@
+{
+	"authors": [
+		"Rémi Thebault"
+	],
+	"copyright": "Copyright © 2017, Rémi Thebault",
+	"description": "Wayland bindings for D",
+	"license": "MIT",
+	"name": "wayland",
+	"subPackages": [
+		"./scanner/",
+		"./client/",
+		"./egl/",
+		"./server/",
+		"./cursor/",
+		"./examples/connect/",
+		"./examples/list_registry/",
+		"./examples/simple_egl/",
+		"./examples/hello/",
+		"./examples/compositor/"
+	],
+	"targetType": "none",
+	"version": "0.4.0"
+}

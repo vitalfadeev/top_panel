@@ -1,0 +1,10 @@
+{
+	"name": "scanner",
+	"targetType": "executable",
+	"authors": [
+		"Rémi Thebault"
+	],
+	"description": "Wayland protocol scanner",
+	"copyright": "Copyright © 2017, Rémi Thebault",
+	"license": "MIT"
+}

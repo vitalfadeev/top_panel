@@ -1,0 +1,37 @@
+{
+	"authors": [
+		"remi.thebault"
+	],
+	"configurations": [
+		{
+			"libs": [
+				"wayland-client"
+			],
+			"name": "static",
+			"targetType": "library",
+			"versions": []
+		},
+		{
+			"dependencies": {
+				"derelict-util": "~>2.0.3"
+			},
+			"name": "dynamic",
+			"targetType": "library",
+			"versions": [
+				"Dynamic"
+			]
+		}
+	],
+	"copyright": "Copyright © 2015, remi.thebault",
+	"description": "Wayland bindings for D.",
+	"importPaths": [
+		"src/"
+	],
+	"license": "MIT",
+	"name": "wayland-client-d",
+	"sourcePaths": [
+		"src/"
+	],
+	"targetType": "library",
+	"version": "1.8.90"
+}

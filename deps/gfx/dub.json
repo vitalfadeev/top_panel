@@ -1,0 +1,31 @@
+{
+	"authors": [
+		"Rémi Thebault"
+	],
+	"copyright": "Copyright © 2016-2018, Rémi Thebault",
+	"description": "D graphics rendering library",
+	"license": "MIT",
+	"name": "gfx",
+	"subPackages": [
+		"bindings",
+		"core",
+		"decl",
+		"genmesh",
+		"gl3",
+		"graal",
+		"math",
+		"memalloc",
+		"vulkan",
+		"window",
+		"examples/declapi",
+		"examples/deferred",
+		"examples/depth",
+		"examples/shadow",
+		"examples/stencil",
+		"examples/swapchain",
+		"examples/texture",
+		"examples/triangle"
+	],
+	"targetType": "none",
+	"version": "0.2.1"
+}

@@ -1,0 +1,21 @@
+# Dub
+.dub/
+dub.selections.json
+docs.json
+/docs
+
+# IDEs
+.vscode/
+
+# Windows
+*.lib
+*.exe
+
+# Linux
+*.a
+window/source/gfx/window/wayland/xdg_shell.d
+
+# example/test executables
+examples/**/gfx_*
+gfx-test-library
+**/gfx-*-test-*
