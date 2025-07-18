@@ -1,0 +1,30 @@
+# Compiled Object files
+*.o
+*.obj
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# IDE
+*.sublime-project
+*.sublime-workspace
+
+# Compiled Static libraries
+*.a
+*.lib
+
+# Executables
+*.exe
+
+# DUB
+.dub
+docs.json
+__dummy.html
+
+# Debug
+*.pdb
+
+# Could be *library* but we want to avoid possible conflicts.
+intel-intrinsics-test-library

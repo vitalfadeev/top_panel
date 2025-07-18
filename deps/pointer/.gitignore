@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/pointer
+pointer.so
+pointer.dylib
+pointer.dll
+pointer.a
+pointer.lib
+pointer-test-*
+*.exe
+*.o
+*.obj
+*.lst

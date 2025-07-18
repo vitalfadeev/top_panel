@@ -1,0 +1,10 @@
+{
+	"name"        : "pointer",
+	"authors"     : ["vf"],
+	"copyright"   : "Copyright © 2025, vf",
+	"description" : "A minimal D application.",
+	"license"     : "proprietary",
+	"dependencies": {
+		"intel-intrinsics"   : {"path":"deps/intel-intrinsics"},
+	},			
+}
