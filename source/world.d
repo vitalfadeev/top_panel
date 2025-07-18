@@ -3,12 +3,17 @@ import std.conv : to;
 
 void
 go () {
+    // world
+    // on world grid
+    // on grid container
+    // in container widget
+
     // init
     auto world = World (Len (ubyte.max,ubyte.max));  // ubyte.max = 255
 
-    auto c1 = world.container (Container.Way.r, Container.Balance.l);
-    auto c2 = world.container (Container.Way.r, Container.Balance.c);
-    auto c3 = world.container (Container.Way.l, Container.Balance.r);
+    auto c1 = world.container (Container.Way.r, Container.Balance.l, Loc (0,0), Loc (L.max/3,1));
+    auto c2 = world.container (Container.Way.r, Container.Balance.c, Loc (L.max/3,0), Loc (L.max/3,1));
+    auto c3 = world.container (Container.Way.l, Container.Balance.r, Loc (L.max/3*2,0), Loc (L.max,1));
 
     auto a  = world.widget (c1, Len (1,1));
     auto b  = world.widget (c1, Len (1,1));
@@ -38,8 +43,8 @@ World {
     World*     next;
 
     Container*
-    container (Container.Way way, Container.Balance balance) {
-        auto container = new Container (way,balance);
+    container (Container.Way way, Container.Balance balance, Loc min_loc, Loc max_loc) {
+        auto container = new Container (way,balance,min_loc,max_loc);
         containers ~= container;
         return container;
     }
@@ -80,9 +85,11 @@ Container {
     Balance    balance = Balance.l;
 
 
-    this (Way way, Balance balance) {
+    this (Way way, Balance balance, Loc min_loc, Loc max_loc) {
         this.way     = way;
         this.balance = balance;
+        this.min_loc = min_loc;
+        this.max_loc = max_loc;
     }
 
     enum
@@ -206,11 +213,19 @@ Visitor {
 struct 
 Event {
     Type type;
+    union {
+        PointerEvent pointer;
+    }
 
     enum
     Type {
         _,
+        POINTER,
     }
+}
+struct 
+PointerEvent {
+    Loc grid_loc;
 }
 
 
