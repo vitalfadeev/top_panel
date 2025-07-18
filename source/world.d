@@ -1,4 +1,3 @@
-import std.conv : to;
 
 
 void
@@ -22,8 +21,10 @@ go () {
     auto e  = world.widget (c3, Len (1,1));
 
     // loop
-    foreach (event; events)
+    foreach (event; events) {
+        auto grid_event_loc = event.loc.to!(Grid.Loc);
         world.see (&event);
+    }
 }
 
 auto
@@ -234,8 +235,8 @@ PointerEvent {
 }
 
 struct
-Grid {
-    alias L   = ubyte;
+Grid {  // SIMD
+    alias L   =  ubyte;
     alias Loc = .TLoc!L;
     alias Len = .TLen!L;
 
@@ -246,9 +247,25 @@ Grid {
     }
 }
 
+auto
+to (T,A) (A a) {
+    static if (is (T == Grid.Loc)) {
+        return _loc_to_grid_loc (a);
+    }
+    else {
+        import std.conv : std_conv_to = to;
+        return a.std_conv_to!T;
+    }
+}
+
+Grid.Loc
+_loc_to_grid_loc (Loc) (Loc loc) {
+    return Grid.Loc ();
+}
+
 
 struct
-TLen (L) {
+TLen (L) {  // SIMD
     L[2] xy;
 
     this (int x, int y) {
@@ -258,7 +275,7 @@ TLen (L) {
 }
 
 struct
-TLoc (L) {
+TLoc (L) {  // SIMD
     L[2] xy;
 
     auto x () { return xy[0]; }
