@@ -3,7 +3,9 @@ import std.conv : to;
 
 void
 go () {
-    auto world       = World (Len (256,256));
+    // init
+    auto world       = World (Len (ubyte.max,ubyte.max));  // ubyte.max = 255
+
     auto container_1 = world.containers.container (Container.Way.r, Container.Balance.l);
     auto container_2 = world.containers.container (Container.Way.r, Container.Balance.c);
     auto container_3 = world.containers.container (Container.Way.l, Container.Balance.r);
@@ -14,10 +16,9 @@ go () {
     auto widget_d = world.widgets.widget (container_3, Len (1,1));
     auto widget_e = world.widgets.widget (container_3, Len (1,1));
 
-    foreach (Event event; events) {
-        auto visitor = Visitor (event);
-        world.see (visitor);
-    }
+    // loop
+    foreach (event; events)
+        world.see (event);
 }
 
 auto
@@ -33,13 +34,15 @@ World {
     Containers containers;
     // Widgets
     Widgets    widgets;
-    // Words
+    // Worlds
     World*     next;
 
     void
-    see (Visitor visitor) {
+    see (Event event) {
+        auto visitor = Visitor (event,this);
+
         foreach (widget; widgets)
-            widget.see (visitor);
+            widget.see (&visitor);
     }
 }
 
@@ -127,8 +130,18 @@ Widget {
 
     //
     void
-    see (Visitor visitor) {
+    see (Visitor* visitor) {
         //
+    }
+
+    void
+    rasterize () {
+        // min_loc -> window coord
+        auto kx = 1366 / L.max;  // 1024  // бижайшее цело степень двойки
+        auto ky =  768 / L.max;  //  512  // бижайшее цело степень двойки
+                                 //       // хвосты влево и вправо
+        auto windowed_x = min_loc.x * kx;
+        auto windowed_y = min_loc.y * ky;
     }
 }
 
@@ -206,6 +219,9 @@ struct
 Loc {
     L[2] xy;
 
+    auto x () { return xy[0]; }
+    auto y () { return xy[1]; }
+
     this (int x, int y) {
         xy[0] = x.to!L;
         xy[1] = y.to!L;
@@ -218,9 +234,9 @@ alias L = ubyte;
 
 // world 
 // 256x256
-// -----------------------
+// ------------------------
 //  1 ab  | 2  c   | 3  de
-// -----------------------
+// ------------------------
 // 3 containers
 //   1
 //   2
