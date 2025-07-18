@@ -9,17 +9,17 @@ go () {
     // in container widget
 
     // init
-    auto world = World (Grid.Len (ubyte.max,ubyte.max));  // ubyte.max = 255
+    auto world = World (Len (ubyte.max,ubyte.max));  // ubyte.max = 255
 
-    auto c1 = world.container (Container.Way.r, Container.Balance.l, Grid.Loc (0,0), Grid.Loc (L.max/3,1));
-    auto c2 = world.container (Container.Way.r, Container.Balance.c, Grid.Loc (L.max/3,0), Grid.Loc (L.max/3,1));
-    auto c3 = world.container (Container.Way.l, Container.Balance.r, Grid.Loc (L.max/3*2,0), Grid.Loc (L.max,1));
+    auto c1 = world.container (Container.Way.r, Container.Balance.l, Loc (0,0), Loc (L.max/3,1));
+    auto c2 = world.container (Container.Way.r, Container.Balance.c, Loc (L.max/3,0), Loc (L.max/3,1));
+    auto c3 = world.container (Container.Way.l, Container.Balance.r, Loc (L.max/3*2,0), Loc (L.max,1));
 
-    auto a  = world.widget (c1, Grid.Len (1,1));
-    auto b  = world.widget (c1, Grid.Len (1,1));
-    auto c  = world.widget (c2, Grid.Len (1,1));
-    auto d  = world.widget (c3, Grid.Len (1,1));
-    auto e  = world.widget (c3, Grid.Len (1,1));
+    auto a  = world.widget (c1, Len (1,1));
+    auto b  = world.widget (c1, Len (1,1));
+    auto c  = world.widget (c2, Len (1,1));
+    auto d  = world.widget (c3, Len (1,1));
+    auto e  = world.widget (c3, Len (1,1));
 
     // loop
     foreach (event; events)
@@ -34,7 +34,7 @@ events () {
 struct
 World {
     // grid
-    Grid.Len   len;
+    Len        len;
     // Containers
     Containers containers;
     // Widgets
@@ -43,14 +43,14 @@ World {
     World*     next;
 
     Container*
-    container (Container.Way way, Container.Balance balance, Grid.Loc min_loc, Grid.Loc max_loc) {
+    container (Container.Way way, Container.Balance balance, Loc min_loc, Loc max_loc) {
         auto container = new Container (way,balance,min_loc,max_loc);
         containers ~= container;
         return container;
     }
 
     Widget*
-    widget (Container* container, Grid.Len fix_len) {
+    widget (Container* container, Len fix_len) {
         auto widget = new Widget ();
         widget.container = container;
         widget.fix_len   = fix_len;
@@ -78,14 +78,14 @@ Container {
     // Able
     bool       able = true;
     // Grid                // Сеточные координаты
-    Grid.Loc   min_loc;    // начало, включая границу
-    Grid.Loc   max_loc;    // конец, включая границу
+    Loc        min_loc;    // начало, включая границу
+    Loc        max_loc;    // конец, включая границу
     // Container
     Way        way     = Way.r;
     Balance    balance = Balance.l;
 
 
-    this (Way way, Balance balance, Grid.Loc min_loc, Grid.Loc max_loc) {
+    this (Way way, Balance balance, Loc min_loc, Loc max_loc) {
         this.way     = way;
         this.balance = balance;
         this.min_loc = min_loc;
@@ -145,11 +145,11 @@ Widget {
     // Able
     bool       able = true;
     // Grid                // Сеточные координаты
-    Grid.Loc   min_loc;    // начало, включая границу
-    Grid.Loc   max_loc;    // конец, включая границу
+    Loc        min_loc;    // начало, включая границу
+    Loc        max_loc;    // конец, включая границу
     // Container           // Контейнерные кооринаты
     Container* container;  // id контейнера = указатель
-    Grid.Len   fix_len;    // fixed len, in gris-coord, 0 = auto
+    Len        fix_len;    // fixed len, in gris-coord, 0 = auto
 
     //
     void
@@ -216,8 +216,8 @@ Visitor {
 
 struct 
 GridEvent {
-    Type     type;
-    Grid.Loc loc;
+    Type type;
+    Loc  loc;
     union {
         PointerEvent pointer;
     }
@@ -236,8 +236,8 @@ PointerEvent {
 struct
 Grid {
     alias L   = ubyte;
-    alias Loc = .Loc!L;
-    alias Len = .Len!L;
+    alias Loc = .TLoc!L;
+    alias Len = .TLen!L;
 
     static
     auto
@@ -248,7 +248,7 @@ Grid {
 
 
 struct
-Len (L) {
+TLen (L) {
     L[2] xy;
 
     this (int x, int y) {
@@ -258,7 +258,7 @@ Len (L) {
 }
 
 struct
-Loc (L) {
+TLoc (L) {
     L[2] xy;
 
     auto x () { return xy[0]; }
@@ -270,7 +270,9 @@ Loc (L) {
     }
 }
 
-alias L = ubyte;
+alias L   = Grid.L;
+alias Loc = Grid.Loc;
+alias Len = Grid.Len;
 
 
 
