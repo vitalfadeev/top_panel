@@ -23,12 +23,12 @@ go () {
 
     // loop
     foreach (event; events)
-        world.see (event);
+        world.see (&event);
 }
 
 auto
 events () {
-    return [Event ()];
+    return [GridEvent ()];
 }
 
 struct
@@ -59,11 +59,11 @@ World {
     }
 
     void
-    see (Event event) {
+    see (GridEvent* event) {
         // сначала верхнй мир
         // затем нижний мир
         //   для решения "widget поверх мир"
-        auto visitor = Visitor (event,this);
+        auto visitor = Visitor (event,&this);
 
         foreach (widget; widgets)
             widget.see (&visitor);
@@ -154,7 +154,11 @@ Widget {
     //
     void
     see (Visitor* visitor) {
-        //
+        if (visitor.event.type == GridEvent.Type.POINTER) {
+            if (between (visitor.event.grid.loc,  min_loc, max_loc)) {
+                // poiner over widget
+            }
+        }
     }
 
     void
@@ -205,14 +209,15 @@ Widgets {  // DList
 struct
 Visitor {
     // Event
-    Event event;
+    GridEvent* event;
     // 
-    World current_world;
+    World*     current_world;
 }
 
 struct 
-Event {
+GridEvent {
     Type type;
+    Loc  loc;
     union {
         PointerEvent pointer;
     }
@@ -225,7 +230,7 @@ Event {
 }
 struct 
 PointerEvent {
-    Loc grid_loc;
+    //
 }
 
 
