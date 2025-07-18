@@ -4,17 +4,17 @@ import std.conv : to;
 void
 go () {
     // init
-    auto world       = World (Len (ubyte.max,ubyte.max));  // ubyte.max = 255
+    auto world = World (Len (ubyte.max,ubyte.max));  // ubyte.max = 255
 
-    auto c1 = world.containers.container (Container.Way.r, Container.Balance.l);
-    auto c2 = world.containers.container (Container.Way.r, Container.Balance.c);
-    auto c3 = world.containers.container (Container.Way.l, Container.Balance.r);
+    auto c1 = world.container (Container.Way.r, Container.Balance.l);
+    auto c2 = world.container (Container.Way.r, Container.Balance.c);
+    auto c3 = world.container (Container.Way.l, Container.Balance.r);
 
-    auto a  = world.widgets.widget (c1, Len (1,1));
-    auto b  = world.widgets.widget (c1, Len (1,1));
-    auto c  = world.widgets.widget (c2, Len (1,1));
-    auto d  = world.widgets.widget (c3, Len (1,1));
-    auto e  = world.widgets.widget (c3, Len (1,1));
+    auto a  = world.widget (c1, Len (1,1));
+    auto b  = world.widget (c1, Len (1,1));
+    auto c  = world.widget (c2, Len (1,1));
+    auto d  = world.widget (c3, Len (1,1));
+    auto e  = world.widget (c3, Len (1,1));
 
     // loop
     foreach (event; events)
@@ -37,8 +37,27 @@ World {
     // Worlds
     World*     next;
 
+    Container*
+    container (Container.Way way, Container.Balance balance) {
+        auto container = new Container (way,balance);
+        containers ~= container;
+        return container;
+    }
+
+    Widget*
+    widget (Container* container, Len fix_len) {
+        auto widget = new Widget ();
+        widget.container = container;
+        widget.fix_len   = fix_len;
+        widgets ~= widget;
+        return widget;
+    }
+
     void
     see (Event event) {
+        // сначала верхнй мир
+        // затем нижний мир
+        //   для решения "widget поверх мир"
         auto visitor = Visitor (event,this);
 
         foreach (widget; widgets)
@@ -91,19 +110,16 @@ Containers {  // DList
     Container* l;
     Container* r;
 
-    Container*
-    container (Container.Way way, Container.Balance balance) {
-        auto container = new Container (way,balance);
+    void
+    opOpAssign (string op : "~") (Container* b) {
         if (this.l is null) {
-            this.l = container;
-            this.r = container;
+            this.l = b;
+            this.r = b;
         }
         else {
-            link (this.r, container);
-            this.r = container;
+            link (this.r, b);
+            this.r = b;
         }
-
-        return container;
     }
 
     pragma (inline,true)
@@ -150,24 +166,6 @@ Widgets {  // DList
     Widget* l;
     Widget* r;
 
-    Widget*
-    widget (Container* container, Len fix_len) {
-        auto widget = new Widget ();
-        widget.container = container;
-        widget.fix_len   = fix_len;
-
-        if (this.l is null) {
-            this.l = widget;
-            this.r = widget;
-        }
-        else {
-            link (this.r, widget);
-            this.r = widget;
-        }
-
-        return widget;
-    }
-
     pragma (inline,true)
     void
     link (Widget* a, Widget* b) {
@@ -175,6 +173,17 @@ Widgets {  // DList
         a.r = b;
     }
 
+    void
+    opOpAssign (string op : "~") (Widget* b) {
+        if (this.l is null) {
+            this.l = b;
+            this.r = b;
+        }
+        else {
+            link (this.r, b);
+            this.r = b;
+        }
+    }
     int
     opApply (int delegate (Widget*) dg) {
         if (this.l !is null)
