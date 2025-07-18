@@ -11,9 +11,9 @@ go () {
     // init
     auto world = World (Len (ubyte.max,ubyte.max));  // ubyte.max = 255
 
-    auto c1 = world.container (Container.Way.r, Container.Balance.l, Loc (0,0), Loc (L.max/3,1));
-    auto c2 = world.container (Container.Way.r, Container.Balance.c, Loc (L.max/3,0), Loc (L.max/3,1));
-    auto c3 = world.container (Container.Way.l, Container.Balance.r, Loc (L.max/3*2,0), Loc (L.max,1));
+    auto c1 = world.container (Container.Way.r, Container.Balance.l, Grid.Loc (0,0), Grid.Loc (L.max/3,1));
+    auto c2 = world.container (Container.Way.r, Container.Balance.c, Grid.Loc (L.max/3,0), Grid.Loc (L.max/3,1));
+    auto c3 = world.container (Container.Way.l, Container.Balance.r, Grid.Loc (L.max/3*2,0), Grid.Loc (L.max,1));
 
     auto a  = world.widget (c1, Len (1,1));
     auto b  = world.widget (c1, Len (1,1));
@@ -43,7 +43,7 @@ World {
     World*     next;
 
     Container*
-    container (Container.Way way, Container.Balance balance, Loc min_loc, Loc max_loc) {
+    container (Container.Way way, Container.Balance balance, Grid.Loc min_loc, Grid.Loc max_loc) {
         auto container = new Container (way,balance,min_loc,max_loc);
         containers ~= container;
         return container;
@@ -78,14 +78,14 @@ Container {
     // Able
     bool       able = true;
     // Grid                // Сеточные координаты
-    Loc        min_loc;    // начало, включая границу
-    Loc        max_loc;    // конец, включая границу
+    Grid.Loc   min_loc;    // начало, включая границу
+    Grid.Loc   max_loc;    // конец, включая границу
     // Container
     Way        way     = Way.r;
     Balance    balance = Balance.l;
 
 
-    this (Way way, Balance balance, Loc min_loc, Loc max_loc) {
+    this (Way way, Balance balance, Grid.Loc min_loc, Grid.Loc max_loc) {
         this.way     = way;
         this.balance = balance;
         this.min_loc = min_loc;
@@ -145,8 +145,8 @@ Widget {
     // Able
     bool       able = true;
     // Grid                // Сеточные координаты
-    Loc        min_loc;    // начало, включая границу
-    Loc        max_loc;    // конец, включая границу
+    Grid.Loc   min_loc;    // начало, включая границу
+    Grid.Loc   max_loc;    // конец, включая границу
     // Container           // Контейнерные кооринаты
     Container* container;  // id контейнера = указатель
     Len        fix_len;    // fixed len, in gris-coord, 0 = auto
@@ -155,7 +155,7 @@ Widget {
     void
     see (Visitor* visitor) {
         if (visitor.event.type == GridEvent.Type.POINTER) {
-            if (between (visitor.event.grid.loc,  min_loc, max_loc)) {
+            if (Grid.between (visitor.event.loc,  min_loc, max_loc)) {
                 // poiner over widget
             }
         }
@@ -216,8 +216,8 @@ Visitor {
 
 struct 
 GridEvent {
-    Type type;
-    Loc  loc;
+    Type     type;
+    Grid.Loc loc;
     union {
         PointerEvent pointer;
     }
@@ -233,6 +233,18 @@ PointerEvent {
     //
 }
 
+struct
+Grid {
+    alias L   = ubyte;
+    alias Loc = .Loc!L;
+
+    static
+    auto
+    between (Loc loc, Loc min_loc, Loc max_loc) {
+        return false;
+    }
+}
+
 
 struct
 Len {
@@ -245,7 +257,7 @@ Len {
 }
 
 struct
-Loc {
+Loc (L) {
     L[2] xy;
 
     auto x () { return xy[0]; }
