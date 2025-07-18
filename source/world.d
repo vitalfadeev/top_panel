@@ -6,15 +6,15 @@ go () {
     // init
     auto world       = World (Len (ubyte.max,ubyte.max));  // ubyte.max = 255
 
-    auto container_1 = world.containers.container (Container.Way.r, Container.Balance.l);
-    auto container_2 = world.containers.container (Container.Way.r, Container.Balance.c);
-    auto container_3 = world.containers.container (Container.Way.l, Container.Balance.r);
+    auto c1 = world.containers.container (Container.Way.r, Container.Balance.l);
+    auto c2 = world.containers.container (Container.Way.r, Container.Balance.c);
+    auto c3 = world.containers.container (Container.Way.l, Container.Balance.r);
 
-    auto widget_a = world.widgets.widget (container_1, Len (1,1));
-    auto widget_b = world.widgets.widget (container_1, Len (1,1));
-    auto widget_c = world.widgets.widget (container_2, Len (1,1));
-    auto widget_d = world.widgets.widget (container_3, Len (1,1));
-    auto widget_e = world.widgets.widget (container_3, Len (1,1));
+    auto a  = world.widgets.widget (c1, Len (1,1));
+    auto b  = world.widgets.widget (c1, Len (1,1));
+    auto c  = world.widgets.widget (c2, Len (1,1));
+    auto d  = world.widgets.widget (c3, Len (1,1));
+    auto e  = world.widgets.widget (c3, Len (1,1));
 
     // loop
     foreach (event; events)
