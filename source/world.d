@@ -9,17 +9,17 @@ go () {
     // in container widget
 
     // init
-    auto world = World (Len (ubyte.max,ubyte.max));  // ubyte.max = 255
+    auto world = World (Grid.Len (ubyte.max,ubyte.max));  // ubyte.max = 255
 
     auto c1 = world.container (Container.Way.r, Container.Balance.l, Grid.Loc (0,0), Grid.Loc (L.max/3,1));
     auto c2 = world.container (Container.Way.r, Container.Balance.c, Grid.Loc (L.max/3,0), Grid.Loc (L.max/3,1));
     auto c3 = world.container (Container.Way.l, Container.Balance.r, Grid.Loc (L.max/3*2,0), Grid.Loc (L.max,1));
 
-    auto a  = world.widget (c1, Len (1,1));
-    auto b  = world.widget (c1, Len (1,1));
-    auto c  = world.widget (c2, Len (1,1));
-    auto d  = world.widget (c3, Len (1,1));
-    auto e  = world.widget (c3, Len (1,1));
+    auto a  = world.widget (c1, Grid.Len (1,1));
+    auto b  = world.widget (c1, Grid.Len (1,1));
+    auto c  = world.widget (c2, Grid.Len (1,1));
+    auto d  = world.widget (c3, Grid.Len (1,1));
+    auto e  = world.widget (c3, Grid.Len (1,1));
 
     // loop
     foreach (event; events)
@@ -34,7 +34,7 @@ events () {
 struct
 World {
     // grid
-    Len        grid_len;
+    Grid.Len   len;
     // Containers
     Containers containers;
     // Widgets
@@ -50,7 +50,7 @@ World {
     }
 
     Widget*
-    widget (Container* container, Len fix_len) {
+    widget (Container* container, Grid.Len fix_len) {
         auto widget = new Widget ();
         widget.container = container;
         widget.fix_len   = fix_len;
@@ -149,7 +149,7 @@ Widget {
     Grid.Loc   max_loc;    // конец, включая границу
     // Container           // Контейнерные кооринаты
     Container* container;  // id контейнера = указатель
-    Len        fix_len;    // fixed len, in gris-coord, 0 = auto
+    Grid.Len   fix_len;    // fixed len, in gris-coord, 0 = auto
 
     //
     void
@@ -237,6 +237,7 @@ struct
 Grid {
     alias L   = ubyte;
     alias Loc = .Loc!L;
+    alias Len = .Len!L;
 
     static
     auto
@@ -247,7 +248,7 @@ Grid {
 
 
 struct
-Len {
+Len (L) {
     L[2] xy;
 
     this (int x, int y) {
