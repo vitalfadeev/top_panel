@@ -35,7 +35,7 @@ main () {
 
 	{
 	    // init
-	    auto world = World (Len (ubyte.max,ubyte.max));  // ubyte.max = 255
+	    auto world = new World (Len (ubyte.max,ubyte.max));  // ubyte.max = 255
 
 	    auto c1 = world.container (Container.Way.r, Container.Balance.l, Loc (0,0), Loc (L.max/3,1));
 	    auto c2 = world.container (Container.Way.r, Container.Balance.c, Loc (L.max/3,0), Loc (L.max/3,1));
@@ -54,17 +54,14 @@ main () {
 	    //    world.see (&wordable_event);
 	    //}
 
+	    auto whats = Whats ();
+	    
 	    auto 
 	    see (What what) {
-	    	return 
-	    		world.see (what.to_wordable) 
-	    		.to_what;
-
 	    	// What -> World -> What
 	    	//   to_world  to_what
+	    	return what.to_world.world_see (world).to_what;
 	    }
-
-	    auto whats = Whats ();
 
 		// loop
 		loop (&whats,&see);
@@ -76,17 +73,24 @@ events () {
     return [What ()];
 }
 
-World_Able_Event*
-to_wordable (What what) {
-	static
-	World_Able_Event _wevent;
-	return &_wevent;
+
+World_Able_Event
+to_world (What what) {
+	// What -> World_Able_Event
+	return World_Able_Event ();
+}
+
+auto 
+world_see (World_Able_Event wable, World* world) {
+	return world.see (&wable);
 }
 
 What
-to_what (World_Able_Event event) {
-	return What ();
+to_what (World_Able_Event wable) {
+	// World_Able_Event -> What
+	return What ();  // new converted What
 }
+
 
 
 class
