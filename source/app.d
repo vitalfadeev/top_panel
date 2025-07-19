@@ -68,6 +68,19 @@ main () {
 	}
 }
 
+// loop
+//                     === app ====
+//   === appinput ====                =========== world ===========
+//            dispatch
+//   Inp - Inp_Event - to_Wrd_Event - Wrd_Event - World - Wrd_Event -
+//   App - App_Event - to_Wrd_Event                                  |
+//       - GUI_Event - to_Wrd_Event                                  |
+//       - Wrd_Event                                                 |
+//    ^                                                              |
+//    |                                                              |
+//     ------------------------------------------------------------- 
+
+
 auto
 events () {
     return [What ()];
