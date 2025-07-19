@@ -87,20 +87,20 @@ events () {
 }
 
 
-World_Able_Event
+World.Event
 to_world (What what) {
-	// What -> World_Able_Event
-	return World_Able_Event ();
+	// What -> World.Event
+	return World.Event ();
 }
 
 auto 
-world_see (World_Able_Event wable, World* world) {
+world_see (World.Event wable, World* world) {
 	return world.see (&wable);
 }
 
 What
-to_what (World_Able_Event wable) {
-	// World_Able_Event -> What
+to_what (World.Event wable) {
+	// World.Event -> What
 	return What ();  // new converted What
 }
 
