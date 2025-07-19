@@ -54,38 +54,38 @@ main () {
 	    //    world.see (&wordable_event);
 	    //}
 
+	    auto 
+	    see (What what) {
+	    	return 
+	    		world.see (what.to_wordable) 
+	    		.to_what;
+
+	    	// What -> World -> What
+	    	//   to_world  to_what
+	    }
+
+	    auto whats = Whats ();
+
 		// loop
-		loop (events,&world.see);
+		loop (&whats,&see);
 	}
 }
 
 auto
 events () {
-    return _Events ([What ()]);
-}
-struct
-_Events {
-    What[] s;
-
-    import std.range;
-    
-    World_Able_Event*  
-    	   front    () { _wevent = s.front.to_wordable_event; return &_wevent; }
-    bool   empty    () { return s.empty; }
-    void   popFront () { s.popFront; }
-	
-	void 
-	opOpAssign (string op : "~") (World_Able_Event event) {
-	    //
-	}
-
-    World_Able_Event _wevent;  
-
+    return [What ()];
 }
 
-World_Able_Event
-to_wordable_event (Event) (Event event) {
-	return World_Able_Event ();
+World_Able_Event*
+to_wordable (What what) {
+	static
+	World_Able_Event _wevent;
+	return &_wevent;
+}
+
+What
+to_what (World_Able_Event event) {
+	return What ();
 }
 
 
