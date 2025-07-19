@@ -1,5 +1,6 @@
 module len;
 
+version (NEVER):
 import l;
 
 //mixin template 

@@ -5,6 +5,8 @@ import whats : Whats;
 import what  : What,AppEvent;
 import loop  : loop;
 import tree  : WalkTree,WalkChilds,childs;
+import world;
+import loc;
 
 
 void 
@@ -21,6 +23,7 @@ main () {
 	// tree in ray
 	// e top_panel, e left, e icon 1, e center, e icon2, e right, e icon 3
 	// <- | ->
+	version (NEVER)
 	{
 		// tree
 		auto main_e = new Main ();
@@ -29,6 +32,60 @@ main () {
 		auto whats = Whats ();
 		loop (whats,&main_e.see);
 	}
+
+	{
+	    // init
+	    auto world = World (Len (ubyte.max,ubyte.max));  // ubyte.max = 255
+
+	    auto c1 = world.container (Container.Way.r, Container.Balance.l, Loc (0,0), Loc (L.max/3,1));
+	    auto c2 = world.container (Container.Way.r, Container.Balance.c, Loc (L.max/3,0), Loc (L.max/3,1));
+	    auto c3 = world.container (Container.Way.l, Container.Balance.r, Loc (L.max/3*2,0), Loc (L.max,1));
+
+	    auto a  = world.widget (c1, Len (1,1));
+	    auto b  = world.widget (c1, Len (1,1));
+	    auto c  = world.widget (c2, Len (1,1));
+	    auto d  = world.widget (c3, Len (1,1));
+	    auto e  = world.widget (c3, Len (1,1));
+
+	    // loop
+	    //foreach (event; events) {
+	    //    //auto grid_event_loc = event.loc.to!(Grid.Loc);
+	    //    auto wordable_event = event.to_wordable_event ();
+	    //    world.see (&wordable_event);
+	    //}
+
+		// loop
+		loop (events,&world.see);
+	}
+}
+
+auto
+events () {
+    return _Events ([What ()]);
+}
+struct
+_Events {
+    What[] s;
+
+    import std.range;
+    
+    World_Able_Event*  
+    	   front    () { _wevent = s.front.to_wordable_event; return &_wevent; }
+    bool   empty    () { return s.empty; }
+    void   popFront () { s.popFront; }
+	
+	void 
+	opOpAssign (string op : "~") (World_Able_Event event) {
+	    //
+	}
+
+    World_Able_Event _wevent;  
+
+}
+
+World_Able_Event
+to_wordable_event (Event) (Event event) {
+	return World_Able_Event ();
 }
 
 

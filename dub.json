@@ -14,6 +14,8 @@
 			"dependencies": {
 				"appinput"   : {"path":"deps/appinput"},
 				"loop"       : {"path":"deps/loop"},
+				"world"      : {"path":"deps/world"},
+				"loc"        : {"path":"deps/loc"},
 			},			
 			"versions"       : ["GL_AllowDeprecated", "GL_ES_2", "LIBINPUT"],
 			"dflags"         : ["-preview=dip1000"]
