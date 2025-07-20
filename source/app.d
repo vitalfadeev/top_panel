@@ -47,6 +47,10 @@ main () {
 	    auto d  = world.widget (c3, Len (1,1));
 	    auto e  = world.widget (c3, Len (1,1));
 
+	    e.event_cb = (event) {
+	    	writeln ("e callback: ", event);
+	    };
+
 	    // loop
 	    //foreach (event; events) {
 	    //    //auto grid_event_loc = event.loc.to!(Grid.Loc);
@@ -74,12 +78,17 @@ main () {
 //            dispatch
 //   Inp - Inp_Event - to_Wrd_Event - Wrd_Event - World - Wrd_Event -
 //   App - App_Event - to_Wrd_Event                                  |
+//       - Grd_Event - to_Wrd_Event                                  |
 //       - GUI_Event - to_Wrd_Event                                  |
 //       - Wrd_Event                                                 |
 //    ^                                                              |
 //    |                                                              |
 //     ------------------------------------------------------------- 
 
+// Inp_Event - Grd_Event - World - find_Widget_is_pointer_over - callback (event)
+//                                                               event_cb (event)
+// callback = void* function (Event)
+// event_cb = void* function (Event, widget)
 
 auto
 events () {
@@ -90,7 +99,7 @@ events () {
 World.Event
 to_world (What what) {
 	// What -> World.Event
-	return World.Event ();
+	return World.Event (/* InpEvent, AppEvent, Grid.Event */);
 }
 
 auto 
