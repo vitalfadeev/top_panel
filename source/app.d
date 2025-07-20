@@ -47,6 +47,11 @@ main () {
 	    auto d  = world.widget (c3, Len (1,1));
 	    auto e  = world.widget (c3, Len (1,1));
 
+	    foreach (_widget; [b,c,d,e]) {
+	    	_widget.grid.min_loc = Loc (1,1);
+	    	_widget.grid.max_loc = Loc (2,1);
+	    }
+
 	    // loop
 	    //foreach (event; events) {
 	    //    //auto grid_event_loc = event.loc.to!(Grid.Loc);
@@ -66,14 +71,18 @@ main () {
 		    }
 	    };
 
+	    a.cust.callback = widget_event_callback;
+
 		// loop
 		//loop (&whats,&see);
-		foreach (ref event; events ()) {
+		foreach (ref event; events) {
 	    	// What -> World -> What
 	    	//   to_world  to_what
+	    	writeln (event);
 			auto _wevent = &event.world;
 
 			world.see (_wevent);
+			writeln (event.world.widget);
 
 			if (auto _widget = _wevent.widget.widget)
 			if (auto _cb     = cast (EVENT_CB) _widget.cust.callback) {
@@ -116,7 +125,21 @@ main () {
 
 auto
 events () {
-    return [Event ()];
+    return [
+    	Event (
+    		Event.Type.INPUT, 
+    		InputEvent (InputEvent.Type.POINTER), 
+    		AppEvent (),
+    		World.Event (
+    			Grid.Event (Loc (0,0)),
+    			Container.Event (),
+    			Widget.Event (),
+    			/* is_gridable */ true,
+    			/* is_containerable */ true,
+    			/* is_widgetable */ true
+			) 
+		),
+	];
 }
 
 
