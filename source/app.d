@@ -52,7 +52,7 @@ main () {
 	    	_widget.grid.max_loc = Loc (2,1);
 	    }
 	    
-	    SEE 
+	    SEE_FN
 	    widget_see = (event) {
 		    if (event.input.type == InputEvent.Type.POINTER) {
 		        writeln ("  poiner over widget: ", event.widget);
@@ -115,12 +115,12 @@ see (World* world, Event* event) {
 //       MOTION : callback (event /* .widget */)
 //       BTN    : callback (event /* .widget */)
 
-alias SEE = void function (Event* event);  // struct {void* _this; void* _cb;}
+alias SEE_FN = void function (Event* event);  // struct {void* _this; void* _cb;}
 
 struct
 Custom_Widget {
     world.Widget widget;
-    SEE 		 see;
+    SEE_FN		 see;
 }
 
 auto
@@ -199,48 +199,6 @@ Grid.Loc
 _loc_to_grid_loc (Loc) (Loc loc) {
     return Grid.Loc ();
 }
-
-
-
-class
-Main : CanClick {
-	override
-	What
-	see (What what) {
-		writefln ("%s", what);
-		if (what.type == What.Type.POINTER_BUTTON) {
-			// return What (What.Type.DRAW);
-			// return What (AppEvent (AppEvent.Type.DRAW));
-			return What (AppEvent.Type.DRAW);
-		}
-		else
-			return What ();
-	}
-}
-
-
-class 
-Button : CanClick {	
-	override
-	What
-	see (What what) {
-		import libinput_d;
-		writeln ("Button.see ()");
-		switch (what.type) {
-			case What.Type.POINTER_BUTTON: break;
-			default:
-		}
-
-		return What (What.Type._);
-	}
-
-	override
-	R
-	next (this R) () {
-		return cast (R) null;
-	}
-}
-
 
 
 // top panel
