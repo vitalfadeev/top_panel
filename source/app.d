@@ -35,21 +35,21 @@ main () {
 
 	{
 	    // init
-	    auto world = new World (Len (ubyte.max,ubyte.max));  // ubyte.max = 255
+	    auto world = new World (Grid.Len (ubyte.max,ubyte.max));  // ubyte.max = 255
 
-	    auto c1 = world.container (Container.Way.r, Container.Balance.l, Loc (0,0), Loc (L.max/3,1));
-	    auto c2 = world.container (Container.Way.r, Container.Balance.c, Loc (L.max/3,0), Loc (L.max/3,1));
-	    auto c3 = world.container (Container.Way.l, Container.Balance.r, Loc (L.max/3*2,0), Loc (L.max,1));
+	    auto c1 = world.container (Container.Way.r, Container.Balance.l, Grid.Loc (0,0), Grid.Loc (Grid.L.max/3,1));
+	    auto c2 = world.container (Container.Way.r, Container.Balance.c, Grid.Loc (Grid.L.max/3,0), Grid.Loc (Grid.L.max/3,1));
+	    auto c3 = world.container (Container.Way.l, Container.Balance.r, Grid.Loc (Grid.L.max/3*2,0), Grid.Loc (Grid.L.max,1));
 
-	    auto a  = world.widgets ~= &(new Custom_Widget (Widget (c1, Len (1,1)))).widget;
-	    auto b  = world.widgets ~= &(new Custom_Widget (Widget (c1, Len (1,1)))).widget;
-	    auto c  = world.widgets ~= &(new Custom_Widget (Widget (c2, Len (1,1)))).widget;
-	    auto d  = world.widgets ~= &(new Custom_Widget (Widget (c3, Len (1,1)))).widget;
-	    auto e  = world.widgets ~= &(new Custom_Widget (Widget (c3, Len (1,1)))).widget;
+	    auto a  = world.widgets ~= &(new Custom_Widget (Widget (c1, Grid.Len (1,1)))).widget;
+	    auto b  = world.widgets ~= &(new Custom_Widget (Widget (c1, Grid.Len (1,1)))).widget;
+	    auto c  = world.widgets ~= &(new Custom_Widget (Widget (c2, Grid.Len (1,1)))).widget;
+	    auto d  = world.widgets ~= &(new Custom_Widget (Widget (c3, Grid.Len (1,1)))).widget;
+	    auto e  = world.widgets ~= &(new Custom_Widget (Widget (c3, Grid.Len (1,1)))).widget;
 
 	    foreach (_widget; [b,c,d,e]) {
-	    	_widget.grid.min_loc = Loc (1,1);
-	    	_widget.grid.max_loc = Loc (2,1);
+	    	_widget.grid.min_loc = Grid.Loc (1,1);
+	    	_widget.grid.max_loc = Grid.Loc (2,1);
 	    }
 	    
 	    SEE_FN
@@ -199,6 +199,10 @@ Grid.Loc
 _loc_to_grid_loc (Loc) (Loc loc) {
     return Grid.Loc ();
 }
+
+alias Len = TLen!L;
+alias Loc = TLoc!L;
+alias L   = int;
 
 
 // top panel
