@@ -41,11 +41,11 @@ main () {
 	    auto c2 = world.container (Container.Way.r, Container.Balance.c, Loc (L.max/3,0), Loc (L.max/3,1));
 	    auto c3 = world.container (Container.Way.l, Container.Balance.r, Loc (L.max/3*2,0), Loc (L.max,1));
 
-	    auto a  = world.widgets ~= &(new Custom_Widget (c1, Len (1,1))).widget;
-	    auto b  = world.widgets ~= &(new Custom_Widget (c1, Len (1,1))).widget;
-	    auto c  = world.widgets ~= &(new Custom_Widget (c2, Len (1,1))).widget;
-	    auto d  = world.widgets ~= &(new Custom_Widget (c3, Len (1,1))).widget;
-	    auto e  = world.widgets ~= &(new Custom_Widget (c3, Len (1,1))).widget;
+	    auto a  = world.widgets ~= &(new Custom_Widget (Widget (c1, Len (1,1)))).widget;
+	    auto b  = world.widgets ~= &(new Custom_Widget (Widget (c1, Len (1,1)))).widget;
+	    auto c  = world.widgets ~= &(new Custom_Widget (Widget (c2, Len (1,1)))).widget;
+	    auto d  = world.widgets ~= &(new Custom_Widget (Widget (c3, Len (1,1)))).widget;
+	    auto e  = world.widgets ~= &(new Custom_Widget (Widget (c3, Len (1,1)))).widget;
 
 	    foreach (_widget; [b,c,d,e]) {
 	    	_widget.grid.min_loc = Loc (1,1);
@@ -55,7 +55,7 @@ main () {
 	    SEE 
 	    widget_see = (event) {
 		    if (event.input.type == InputEvent.Type.POINTER) {
-		        writeln ("  poiner over widget: ", event.world.widget);
+		        writeln ("  poiner over widget: ", event.widget);
 		    }
 	    };
 
@@ -65,9 +65,12 @@ main () {
 		//loop (&whats,&see);
 		foreach (ref event; events) {
 			// find widget
-			auto grid_loc = Grid.Loc (0,0);  // from event
+			auto grid_loc = _loc_to_grid_loc (Loc (0,0));  // from event
+
 			foreach (_widget; world.widgets (grid_loc)) {
-				event.world.widget = _widget;
+				event.world  =  world;
+				event.widget = _widget;
+
 				// callback
 				if (auto _widget_see = (cast (Custom_Widget*) _widget).see) {
 					_widget_see (&event);
@@ -113,17 +116,7 @@ alias SEE = void function (Event* event);  // struct {void* _this; void* _cb;}
 struct
 Custom_Widget {
     world.Widget widget;
-    alias widget this;
-
-    SEE see;
-
-    this (Container* container, Len fix_len) {
-        widget = world.Widget (container,fix_len);
-    }
-
-	this (Loc min_loc, Loc max_loc) {
-		widget = world.Widget (container,fix_len);
-	}
+    SEE 		 see;
 }
 
 auto
@@ -133,14 +126,6 @@ events () {
     		Event.Type.INPUT, 
     		InputEvent (InputEvent.Type.POINTER), 
     		AppEvent (),
-    		World.Event (
-    			null,
-    			null,
-    			null,
-    			/* is_gridable */ true,
-    			/* is_containerable */ true,
-    			/* is_widgetable */ true
-			) 
 		),
 	];
 }
@@ -151,7 +136,8 @@ Event {
 	Type 		type;
     InputEvent  input;
     AppEvent    app;
-    World.Event world;
+    World*      world;
+    Widget*     widget;
 
     // if (event) ...
     bool opCast (T) () if (is (T == bool)) { return (type != Type._); }
