@@ -185,6 +185,22 @@ AppEvent {
     bool opCast (T) () if (is (T == bool)) { return (type != 0); }
 }
 
+auto
+to (T,A) (A a) {
+    static if (is (T == Grid.Loc)) {
+        return _loc_to_grid_loc (a);
+    }
+    else {
+        import std.conv : std_conv_to = to;
+        return a.std_conv_to!T;
+    }
+}
+
+Grid.Loc
+_loc_to_grid_loc (Loc) (Loc loc) {
+    return Grid.Loc ();
+}
+
 
 
 class
