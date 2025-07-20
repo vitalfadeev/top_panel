@@ -96,7 +96,7 @@ void
 _input_event (World* world, Event* event) {
 	final
 	switch (event.input.type) {
-		case InputEvent.Type._     : break;
+		case InputEvent.Type._       : break;
 		case InputEvent.Type.POINTER : _pointer_event (world,event); break;
 	}
 }
@@ -107,7 +107,7 @@ _pointer_event (World* world, Event* event) {
 	auto grid_loc = _loc_to_grid_loc (event.input.loc);  // from event
 
 	foreach (_widget; world.widgets (grid_loc)) {
-		event.widget = _widget;
+		event.widget = cast (Widget*) _widget;
 
 		// callback
 		if (auto _widget_see = (cast (Custom_Widget*) _widget).see) {
@@ -224,6 +224,110 @@ alias Loc = TLoc!L;
 alias L   = int;
 
 
+version (NEVER) {
+    /*
+    auto
+    see (World.Event* event) {
+        // Grid able
+        //   сетка матчит по сеточным координатам
+        //     сеточные координаты лежат в event, туда попадают из конвертора
+        //   pointer events
+        //     motion
+        //     button
+        // Hot key
+        //   key events
+        // World events
+
+        // key
+        //   -> focused
+        // pointer
+        //   -> widgets
+
+
+        // Grid able
+        //   сначала верхнй мир
+        //   затем нижний мир
+        //     для решения "widget поверх мир"
+
+        if (event.is_widgetable)
+        if (event.is_gridable)
+        foreach (widget; widgets.walk) {
+            if (widget.grid.match (event.grid.loc)) {
+                event.widget.widget = widget;
+            }
+        }
+
+        return World.Event ();
+    }
+    */
+
+    void
+    rasterize (Len,FILL_FN) (Len window_len, FILL_FN fill) {
+        // min_loc -> window coord
+        version (NEVER) {
+            auto kx = 1366 / L.max;  // 1024  // бижайшее цело степень двойки
+            auto ky =  768 / L.max;  //  512  // бижайшее цело степень двойки
+                                     //       // хвосты влево и вправо
+
+             auto wind_x = near_2_int (window_len.x);
+             auto grid_x = near_2_int (L.max);
+             auto rest_x = wind_x - grid_x;  //хвосты влево и вправо
+             auto padl_x = rest_x / 2; 
+
+             // на сколько сдвигать биты ?
+             auto wind_x_msb = msb (window_len.x);
+             auto grid_x_msb = msb (L.max);
+
+             int shift;
+             int shift_left;
+             if (wind_x_msb > grid_x_msb) {
+                shift      = (wind_x_msb - grid_x_msb);
+                shift_left = true;
+            }
+            else {
+                shift      = (grid_x_msb - wind_x_msb);
+                shift_left = false;
+            }
+        }
+
+        foreach (_widget; widgets) {  // SIMD
+            // fast vetsion
+            auto min_loc = _widget.min_loc;
+            auto max_loc = _widget.max_loc;
+            if (shift_left) {
+                auto windowed_min_x = min_loc.x << shift;
+                auto windowed_min_y = min_loc.y << shift;
+                auto windowed_max_x = max_loc.x << shift;
+                auto windowed_max_y = max_loc.y << shift;
+
+                fill (
+                    padl_x + windowed_min_x, windowed_min_y,
+                    padl_x + windowed_max_x, windowed_max_y);
+            }
+            else {
+                auto windowed_min_x = min_loc.x >> shift;
+                auto windowed_min_y = min_loc.y >> shift;
+                auto windowed_max_x = max_loc.x >> shift;
+                auto windowed_max_y = max_loc.y >> shift;
+
+                fill (
+                    padl_x + windowed_min_x, windowed_min_y,
+                    padl_x + windowed_max_x, windowed_max_y);
+            }
+            // slow version
+            version (NEVER) {
+            auto min_loc = _widget.min_loc;
+            auto max_loc = _widget.max_loc;
+            auto windowed_min_x = min_loc.x * window_len.x / L.max;
+            auto windowed_min_y = min_loc.y * window_len.y / L.max;
+            auto windowed_max_x = max_loc.x * window_len.x / L.max;
+            auto windowed_max_y = max_loc.y * window_len.y / L.max;
+            }
+        }
+    }
+	
+}
+
 // top panel
 //  left  center  right
 //   icon  icon    icon
@@ -264,3 +368,4 @@ alias L   = int;
 // DTK
 // DGUI
 // Tiny Core Linux
+
