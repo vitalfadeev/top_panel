@@ -37,9 +37,9 @@ main () {
 	    // init
 	    auto world = new World (Grid.Len (ubyte.max,ubyte.max));  // ubyte.max = 255
 
-	    auto c1 = world.container (Container.Way.r, Container.Balance.l, Grid.Loc (0,0), Grid.Loc (Grid.L.max/3,1));
-	    auto c2 = world.container (Container.Way.r, Container.Balance.c, Grid.Loc (Grid.L.max/3,0), Grid.Loc (Grid.L.max/3,1));
-	    auto c3 = world.container (Container.Way.l, Container.Balance.r, Grid.Loc (Grid.L.max/3*2,0), Grid.Loc (Grid.L.max,1));
+	    auto c1 = world.containers ~= new Container (Container.Way.r, Container.Balance.l, Grid.Loc (0,0), Grid.Loc (Grid.L.max/3,1));
+	    auto c2 = world.containers ~= new Container (Container.Way.r, Container.Balance.c, Grid.Loc (Grid.L.max/3,0), Grid.Loc (Grid.L.max/3,1));
+	    auto c3 = world.containers ~= new Container (Container.Way.l, Container.Balance.r, Grid.Loc (Grid.L.max/3*2,0), Grid.Loc (Grid.L.max,1));
 
 	    auto a  = world.widgets ~= &(new Custom_Widget (Widget (c1, Grid.Len (1,1)))).widget;
 	    auto b  = world.widgets ~= &(new Custom_Widget (Widget (c1, Grid.Len (1,1)))).widget;
@@ -61,8 +61,18 @@ main () {
 
 	    (cast (Custom_Widget*) a).see = widget_see;
 
+		auto
+		events () {
+		    return [
+		    	Event (
+		    		Event.Type.INPUT, 
+		    		InputEvent (InputEvent.Type.POINTER), 
+		    		AppEvent (),
+				),
+			];
+		}
+
 		// loop
-		//loop (&whats,&see);
 		foreach (ref event; events)
 			see (world, &event);
 	}
@@ -71,11 +81,32 @@ main () {
 
 void
 see (World* world, Event* event) {
+	event.world = world;
+
+	final
+	switch (event.type) {
+		case Event.Type._     : break;
+		case Event.Type.INPUT : _input_event (world,event); break;
+		case Event.Type.APP   : break;
+		case Event.Type.WORLD : break;
+	}
+}
+
+void
+_input_event (World* world, Event* event) {
+	final
+	switch (event.input.type) {
+		case InputEvent.Type._     : break;
+		case InputEvent.Type.POINTER : _pointer_event (world,event); break;
+	}
+}
+
+void 
+_pointer_event (World* world, Event* event) {
 	// find widget
 	auto grid_loc = _loc_to_grid_loc (event.input.loc);  // from event
 
 	foreach (_widget; world.widgets (grid_loc)) {
-		event.world  =  world;
 		event.widget = _widget;
 
 		// callback
@@ -122,18 +153,6 @@ Custom_Widget {
     world.Widget widget;
     SEE_FN		 see;
 }
-
-auto
-events () {
-    return [
-    	Event (
-    		Event.Type.INPUT, 
-    		InputEvent (InputEvent.Type.POINTER), 
-    		AppEvent (),
-		),
-	];
-}
-
 
 struct
 Event {
