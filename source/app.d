@@ -47,10 +47,6 @@ main () {
 	    auto d  = world.widget (c3, Len (1,1));
 	    auto e  = world.widget (c3, Len (1,1));
 
-	    e.event_cb = (event) {
-	    	writeln ("e callback: ", event);
-	    };
-
 	    // loop
 	    //foreach (event; events) {
 	    //    //auto grid_event_loc = event.loc.to!(Grid.Loc);
@@ -58,17 +54,29 @@ main () {
 	    //    world.see (&wordable_event);
 	    //}
 
-	    auto whats = Whats ();
+	    //auto whats = events ();
 	    
 	    auto 
-	    see (What what) {
+	    see (Event* event) {
 	    	// What -> World -> What
 	    	//   to_world  to_what
-	    	return what.to_world.world_see (world).to_what;
+			auto _wevent = event.to_world;
+
+			auto new_wevent = world.see (_wevent);
+
+			if (_wevent.widget.widget)
+			if (event.input.type == InputEvent.Type.POINTER) {
+			    // poiner over widget
+			    writeln ("  poiner over widget: ", _wevent.widget.widget);
+			}
+
+	    	return _wevent.to_what;
 	    }
 
 		// loop
-		loop (&whats,&see);
+		//loop (&whats,&see);
+		foreach (ref event; events ())
+		    world.see (&event.world);
 	}
 }
 
@@ -90,27 +98,87 @@ main () {
 // callback = void* function (Event)
 // event_cb = void* function (Event, widget)
 
+// Inp_Event - Event - World
+//                     - find_widget_at_loc - widget - Event.widget
+// event loop
+//   event
+//   event.loc.to_grid -> grid_loc
+//   world.find_widget_at_loc (grid_loc) -> widget
+//   event.widget = widget
+//   callbacks...
+//     event
+//       MOTION : callback (event /* .widget */)
+//       BTN    : callback (event /* .widget */)
+
 auto
 events () {
-    return [What ()];
+    return [Event ()];
 }
 
 
-World.Event
-to_world (What what) {
+World.Event*
+to_world (Event* event) {
 	// What -> World.Event
-	return World.Event (/* InpEvent, AppEvent, Grid.Event */);
+	return &event.world;
 }
 
 auto 
-world_see (World.Event wable, World* world) {
-	return world.see (&wable);
+world_see (World.Event event, World* world) {
+	return world.see (&event);
 }
 
-What
-to_what (World.Event wable) {
+Event
+to_what (World.Event* wable) {
 	// World.Event -> What
-	return What ();  // new converted What
+	return Event (Event.Type._, InputEvent(), AppEvent(), *wable);  // new converted What
+}
+
+
+struct
+Event {
+	Type 		type;
+    InputEvent  input;
+    AppEvent    app;
+    World.Event world;
+
+    // if (event) ...
+    bool opCast (T) () if (is (T == bool)) { return (type != Type._); }
+
+	enum 
+	Type {
+	    _,
+	    INPUT,
+	    APP,
+	    WORLD,
+	}
+}
+
+struct
+InputEvent {
+    Type type;
+
+    enum 
+    Type {
+        _,
+        POINTER,
+    }
+
+    // if (InputEvent) ...
+    bool opCast (T) () if (is (T == bool)) { return (type != 0); }
+}
+
+struct
+AppEvent {
+    Type type;
+
+    enum 
+    Type {
+        _,
+        START,
+    }
+
+    // if (AppEvent) ...
+    bool opCast (T) () if (is (T == bool)) { return (type != 0); }
 }
 
 
