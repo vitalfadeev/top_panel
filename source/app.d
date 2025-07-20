@@ -56,29 +56,33 @@ main () {
 
 	    //auto whats = events ();
 	    
-	    auto 
-	    see (Event* event) {
-	    	// What -> World -> What
-	    	//   to_world  to_what
-			auto _wevent = event.to_world;
+	    // 
+	    alias EVENT_CB = void function (Event* event);  // struct {void* _this; void* _cb;}
 
-			auto new_wevent = world.see (_wevent);
-
-			if (_wevent.widget.widget)
-			if (event.input.type == InputEvent.Type.POINTER) {
-			    // poiner over widget
-			    writeln ("  poiner over widget: ", _wevent.widget.widget);
-			}
-
-	    	return _wevent.to_what;
-	    }
+	    EVENT_CB 
+	    widget_event_callback = (event) {
+		    if (event.input.type == InputEvent.Type.POINTER) {
+		        writeln ("  poiner over widget: ", event.world.widget);
+		    }
+	    };
 
 		// loop
 		//loop (&whats,&see);
-		foreach (ref event; events ())
-		    world.see (&event.world);
+		foreach (ref event; events ()) {
+	    	// What -> World -> What
+	    	//   to_world  to_what
+			auto _wevent = &event.world;
+
+			world.see (_wevent);
+
+			if (auto _widget = _wevent.widget.widget)
+			if (auto _cb     = cast (EVENT_CB) _widget.cust.callback) {
+				_cb (&event);
+			}
+		}
 	}
 }
+
 
 // loop
 //                     === app ====
