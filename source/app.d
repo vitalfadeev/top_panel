@@ -63,23 +63,27 @@ main () {
 
 		// loop
 		//loop (&whats,&see);
-		foreach (ref event; events) {
-			// find widget
-			auto grid_loc = _loc_to_grid_loc (Loc (0,0));  // from event
-
-			foreach (_widget; world.widgets (grid_loc)) {
-				event.world  =  world;
-				event.widget = _widget;
-
-				// callback
-				if (auto _widget_see = (cast (Custom_Widget*) _widget).see) {
-					_widget_see (&event);
-				}
-			}
-		}
+		foreach (ref event; events)
+			see (world, &event);
 	}
 }
 
+
+void
+see (World* world, Event* event) {
+	// find widget
+	auto grid_loc = _loc_to_grid_loc (event.input.loc);  // from event
+
+	foreach (_widget; world.widgets (grid_loc)) {
+		event.world  =  world;
+		event.widget = _widget;
+
+		// callback
+		if (auto _widget_see = (cast (Custom_Widget*) _widget).see) {
+			_widget_see (event);
+		}
+	}    
+}
 
 // loop
 //                     === app ====
@@ -154,6 +158,7 @@ Event {
 struct
 InputEvent {
     Type type;
+    Loc  loc;
 
     enum 
     Type {
