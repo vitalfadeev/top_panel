@@ -984,8 +984,150 @@ GUI = AppEvent.Type.GUI,
 DRAW = AppEvent.Type.DRAW,
 }
 
+// expansion at source/impl.d(187,17)
+
+    {
+        auto dest = &(cast (wayland_ctx*) ctx).wl_seat;
+
+        if (strcmp (dest.IFACE.name, interface_) == 0) {
+            *dest = cast (wl_seat*) _this.bind (name, &dest.IFACE, version_);
+
+            static if (__traits (hasMember, dest, "listener")) {
+                dest.add_listener (&dest.listener,ctx);
+            }
+        }
+    }
+
+// expansion at source/impl.d(188,17)
+
+    {
+        auto dest = &(cast (wayland_ctx*) ctx).wl_compositor;
+
+        if (strcmp (dest.IFACE.name, interface_) == 0) {
+            *dest = cast (wl_compositor*) _this.bind (name, &dest.IFACE, version_);
+
+            static if (__traits (hasMember, dest, "listener")) {
+                dest.add_listener (&dest.listener,ctx);
+            }
+        }
+    }
+
+// expansion at source/impl.d(189,17)
+
+    {
+        auto dest = &(cast (wayland_ctx*) ctx).xdg_wm_base;
+
+        if (strcmp (dest.IFACE.name, interface_) == 0) {
+            *dest = cast (xdg_wm_base*) _this.bind (name, &dest.IFACE, version_);
+
+            static if (__traits (hasMember, dest, "listener")) {
+                dest.add_listener (&dest.listener,ctx);
+            }
+        }
+    }
+
+// expansion at source/impl.d(190,17)
+
+    {
+        auto dest = &(cast (wayland_ctx*) ctx).wl_shm;
+
+        if (strcmp (dest.IFACE.name, interface_) == 0) {
+            *dest = cast (wl_shm*) _this.bind (name, &dest.IFACE, version_);
+
+            static if (__traits (hasMember, dest, "listener")) {
+                dest.add_listener (&dest.listener,ctx);
+            }
+        }
+    }
+
 // expansion at /usr/include/dmd/druntime/import/object.d(4907,5)
 import imported = std.traits;
+
+// expansion at
+.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
+
+// expansion at
+.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
+
+// expansion at source/impl.d(236,9)
+
+    {
+        auto dest = &(cast (wayland_ctx*) ctx).wl_seat;
+
+        if (strcmp (dest.IFACE.name, interface_) == 0) {
+            *dest = cast (wl_seat*) _this.bind (name, &dest.IFACE, version_);
+
+            static if (__traits (hasMember, dest, "listener")) {
+                dest.add_listener (&dest.listener,ctx);
+            }
+        }
+    }
+
+// expansion at source/impl.d(237,9)
+
+    {
+        auto dest = &(cast (wayland_ctx*) ctx).wl_compositor;
+
+        if (strcmp (dest.IFACE.name, interface_) == 0) {
+            *dest = cast (wl_compositor*) _this.bind (name, &dest.IFACE, version_);
+
+            static if (__traits (hasMember, dest, "listener")) {
+                dest.add_listener (&dest.listener,ctx);
+            }
+        }
+    }
+
+// expansion at source/impl.d(238,9)
+
+    {
+        auto dest = &(cast (wayland_ctx*) ctx).xdg_wm_base;
+
+        if (strcmp (dest.IFACE.name, interface_) == 0) {
+            *dest = cast (xdg_wm_base*) _this.bind (name, &dest.IFACE, version_);
+
+            static if (__traits (hasMember, dest, "listener")) {
+                dest.add_listener (&dest.listener,ctx);
+            }
+        }
+    }
+
+// expansion at source/impl.d(239,9)
+
+    {
+        auto dest = &(cast (wayland_ctx*) ctx).wl_shm;
+
+        if (strcmp (dest.IFACE.name, interface_) == 0) {
+            *dest = cast (wl_shm*) _this.bind (name, &dest.IFACE, version_);
+
+            static if (__traits (hasMember, dest, "listener")) {
+                dest.add_listener (&dest.listener,ctx);
+            }
+        }
+    }
+
+// expansion at /usr/include/dmd/phobos/std/functional.d(225,13)
+alias a = __a ;
+
+// expansion at /usr/include/dmd/phobos/std/functional.d(226,13)
+alias b = __b ;
+
+// expansion at /usr/include/dmd/phobos/std/functional.d(227,20)
+a == b
+
+// expansion at /usr/include/dmd/phobos/std/functional.d(225,13)
+alias a = __a ;
+
+// expansion at /usr/include/dmd/phobos/std/functional.d(226,13)
+alias b = __b ;
+
+// expansion at /usr/include/dmd/phobos/std/functional.d(227,20)
+a == b
+
+// expansion at
+.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
+
+// expansion at
+.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
 
 // expansion at
 .object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;

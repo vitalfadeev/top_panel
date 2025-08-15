@@ -7,6 +7,8 @@ import loop  : loop;
 import tree  : WalkTree,WalkChilds,childs;
 import world;
 import loc;
+import wayland_struct;
+import impl;
 
 
 void 
@@ -35,6 +37,7 @@ main () {
 
 	{
 	    // init
+        auto wayland = Wayland (640,480,&draw);        
 	    auto world = new World (null,null,true, List!Container(null,null), List!Widget(null,null), Grid.Len (ubyte.max,ubyte.max));  // ubyte.max = 255
 
 	    auto c1 = world.containers ~= new Container (Container.Way.r, Container.Balance.l, Grid.Loc (0,0), Grid.Loc (Grid.L.max/3,1));
@@ -61,20 +64,36 @@ main () {
 
 	    (cast (Custom_Widget*) a).see = widget_see;
 
-		auto
-		events () {
-		    return [
-		    	Event (
-		    		Event.Type.INPUT, 
-		    		InputEvent (InputEvent.Type.POINTER), 
-		    		AppEvent (),
-				),
-			];
-		}
+        // event loop
+        foreach (event; wayland.events) {
+            writeln (*event);
+            switch (event.type) {
+                case event.Type.POINTER_BUTTON: 
+                    if (event.pointer.button == BTN_LEFT)
+                        wayland.ctx.done = true;
+                    break;
+                case event.Type.KEYBOARD_KEY: 
+                    if (event.keyboard.key == KEY_ESC)
+                        wayland.ctx.done = true;
+                    break;
+                default:
+            }
+        }
 
-		// loop
-		foreach (ref event; events)
-			see (world, &event);
+		//auto
+		//events () {
+		//    return [
+		//    	Event (
+		//    		Event.Type.INPUT, 
+		//    		InputEvent (InputEvent.Type.POINTER), 
+		//    		AppEvent (),
+		//		),
+		//	];
+		//}
+
+		//// loop
+		//foreach (ref event; events)
+		//	see (world, &event);
 	}
 }
 
@@ -114,6 +133,21 @@ _pointer_event (World* world, Event* event) {
 			_widget_see (event);
 		}
 	}    
+}
+
+void
+draw (wayland_ctx* ctx, uint* pixels /* xrgb8888 */) {
+    // Draw checkerboxed background
+    with (ctx) {
+        for (int y = 0; y < height; ++y) {
+            for (int x = 0; x < width; ++x) {
+                if ((x + y / 32 * 32) % 64 < 32)
+                    pixels[y * width + x] = 0xFF666666;
+                else
+                    pixels[y * width + x] = 0xFFEEEEEE;
+            }
+        }
+    }
 }
 
 // loop
