@@ -38,7 +38,8 @@ main () {
 	{
 	    // init
         auto wayland = Wayland (640,480,&draw);        
-	    auto world = new World (null,null,true, List!Container(null,null), List!Widget(null,null), Grid.Len (ubyte.max,ubyte.max));  // ubyte.max = 255
+	    auto world = new Custom_World (
+            World (null,null,true, List!Container(null,null), List!Widget(null,null), Grid.Len (ubyte.max,ubyte.max)));  // ubyte.max = 255
 
 	    auto c1 = world.containers ~= new Container (Container.Way.r, Container.Balance.l, Grid.Loc (0,0), Grid.Loc (Grid.L.max/3,1));
 	    auto c2 = world.containers ~= new Container (Container.Way.r, Container.Balance.c, Grid.Loc (Grid.L.max/3,0), Grid.Loc (Grid.L.max/3,1));
@@ -83,7 +84,7 @@ main () {
             base_event.input  = event;
             base_event.world  = world;
             base_event.widget = null;
-            _main (world,&base_event);
+            world.main (world,&base_event);
         }
 
 		//auto
@@ -99,22 +100,30 @@ main () {
 	}
 }
 
+struct
+Custom_World {
+    World _super;
+    alias _super this;
 
-void
-_main (World* world, Event* event) {
-	event.world = world;
+    MAIN_FN main = 
+        (Custom_World* _this, Event* event) {
+            event.world = _this;
 
-	final
-	switch (event.type) {
-		case Event.Type._     : break;
-		case Event.Type.INPUT : _input_event (world,event); break;
-		case Event.Type.APP   : break;
-		case Event.Type.WORLD : break;
-	}
+            final
+            switch (event.type) {
+                case Event.Type._     : break;
+                case Event.Type.INPUT : _input_event (_this,event); break;
+                case Event.Type.APP   : break;
+                case Event.Type.WORLD : break;
+            }
+        };
+
+    alias MAIN_FN = void function (Custom_World* _this, Event* event);
 }
 
+
 void
-_input_event (World* world, Event* event) {
+_input_event (Custom_World* world, Event* event) {
 	switch (event.input.type) {
 		case InputEvent.Type.NONE           : break;
 		case InputEvent.Type.POINTER_BUTTON : _pointer_button_event (world,event); break;
@@ -123,7 +132,7 @@ _input_event (World* world, Event* event) {
 }
 
 void 
-_pointer_button_event (World* world, Event* event) {
+_pointer_button_event (Custom_World* world, Event* event) {
 	// find widget
 	auto grid_loc = _loc_to_grid_loc (event.loc);  // from event
 
@@ -195,12 +204,12 @@ Custom_Widget {
 
 struct
 Event {
-	Type 		type;
-    InputEvent  input;
-    AppEvent    app;
-    World*      world;
-    Widget*     widget;
-    Loc         loc;
+	Type 		  type;
+    InputEvent    input;
+    AppEvent      app;
+    Custom_World* world;
+    Widget*       widget;
+    Loc           loc;
 
     // if (event) ...
     bool opCast (T) () if (is (T == bool)) { return (type != Type._); }
