@@ -57,7 +57,7 @@ main () {
 	    }
 	    
 	    (cast (Custom_Widget*) a).main =
-            (event) {
+            (_this,event) {
                 if (event.input.type == event.input.Type.POINTER_BUTTON) {
                     writeln ("  poiner over widget: ", event.widget);
                 }
@@ -141,7 +141,7 @@ _pointer_button_event (Custom_World* world, Event* event) {
 
 		// callback
 		if (auto _widget_main = (cast (Custom_Widget*) _widget).main) {
-			_widget_main (event);
+			_widget_main (cast (Custom_Widget*) _widget,event);
 		}
 	}    
 }
@@ -195,11 +195,11 @@ struct
 Custom_Widget {
     world.Widget widget;
     MAIN_FN      main = 
-        (Event* event) {
+        (_this, event) {
             //
         };
 
-    alias MAIN_FN = void function (Event* event);  // struct {void* _this; void* _cb;}
+    alias MAIN_FN = void function (Custom_Widget* _this, Event* event);  // struct {void* _this; void* _cb;}
 }
 
 struct
