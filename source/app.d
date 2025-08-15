@@ -35,7 +35,7 @@ main () {
 
 	{
 	    // init
-	    auto world = new World (Grid.Len (ubyte.max,ubyte.max));  // ubyte.max = 255
+	    auto world = new World (null,null,true, List!Container(null,null), List!Widget(null,null), Grid.Len (ubyte.max,ubyte.max));  // ubyte.max = 255
 
 	    auto c1 = world.containers ~= new Container (Container.Way.r, Container.Balance.l, Grid.Loc (0,0), Grid.Loc (Grid.L.max/3,1));
 	    auto c2 = world.containers ~= new Container (Container.Way.r, Container.Balance.c, Grid.Loc (Grid.L.max/3,0), Grid.Loc (Grid.L.max/3,1));
@@ -106,7 +106,7 @@ _pointer_event (World* world, Event* event) {
 	// find widget
 	auto grid_loc = _loc_to_grid_loc (event.input.loc);  // from event
 
-	foreach (_widget; world.widgets (grid_loc)) {
+	foreach (_widget; world.get_widgets (grid_loc)) {
 		event.widget = cast (Widget*) _widget;
 
 		// callback
@@ -151,7 +151,13 @@ alias SEE_FN = void function (Event* event);  // struct {void* _this; void* _cb;
 struct
 Custom_Widget {
     world.Widget widget;
-    SEE_FN		 see;
+    SEE_FN       see = &see_impl_default;
+
+    static
+    void
+    see_impl_default (Event* event) {
+        //
+    };
 }
 
 struct

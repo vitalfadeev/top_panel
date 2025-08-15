@@ -12,10 +12,11 @@
 			"platforms"      : ["linux"],
 			"targetType"     : "executable",
 			"dependencies": {
-				"appinput"   : {"path":"deps/appinput"},
-				"loop"       : {"path":"deps/loop"},
-				"world"      : {"path":"deps/world"},
-				"loc"        : {"path":"deps/loc"},
+				"appinput"       : {"path":"deps/appinput"},
+				"loop"           : {"path":"deps/loop"},
+				"world"          : {"path":"deps/world"},
+				"loc"            : {"path":"deps/loc"},
+				"wayland_struct" : {"path":"deps/wayland_struct"},
 			},			
 			"versions"       : ["GL_AllowDeprecated", "GL_ES_2", "LIBINPUT"],
 			"dflags"         : ["-preview=dip1000"]
