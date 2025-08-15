@@ -1051,6 +1051,7 @@ Event {
 
     enum
     Type : ushort {
+        _                       = libinput_event_type.LIBINPUT_EVENT_NONE,
         NONE                    = libinput_event_type.LIBINPUT_EVENT_NONE,
         DEVICE_ADDED            = libinput_event_type.LIBINPUT_EVENT_DEVICE_ADDED,
         DEVICE_REMOVED          = libinput_event_type.LIBINPUT_EVENT_DEVICE_REMOVED,

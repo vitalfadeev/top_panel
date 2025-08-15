@@ -57,12 +57,14 @@ main () {
 	    
 	    SEE_FN
 	    widget_see = (event) {
-		    if (event.input.type == InputEvent.Type.POINTER) {
+		    if (event.input.type == event.input.Type.POINTER_BUTTON) {
 		        writeln ("  poiner over widget: ", event.widget);
 		    }
 	    };
 
 	    (cast (Custom_Widget*) a).see = widget_see;
+
+        Event base_event;
 
         // event loop
         foreach (event; wayland.events) {
@@ -78,6 +80,12 @@ main () {
                     break;
                 default:
             }
+
+            base_event.type   = base_event.Type.INPUT;
+            base_event.input  = event;
+            base_event.world  = world;
+            base_event.widget = null;
+            see (world,&base_event);
         }
 
 		//auto
@@ -90,10 +98,6 @@ main () {
 		//		),
 		//	];
 		//}
-
-		//// loop
-		//foreach (ref event; events)
-		//	see (world, &event);
 	}
 }
 
@@ -113,17 +117,17 @@ see (World* world, Event* event) {
 
 void
 _input_event (World* world, Event* event) {
-	final
 	switch (event.input.type) {
-		case InputEvent.Type._       : break;
-		case InputEvent.Type.POINTER : _pointer_event (world,event); break;
+		case InputEvent.Type.NONE           : break;
+		case InputEvent.Type.POINTER_BUTTON : _pointer_button_event (world,event); break;
+        default:
 	}
 }
 
 void 
-_pointer_event (World* world, Event* event) {
+_pointer_button_event (World* world, Event* event) {
 	// find widget
-	auto grid_loc = _loc_to_grid_loc (event.input.loc);  // from event
+	auto grid_loc = _loc_to_grid_loc (event.loc);  // from event
 
 	foreach (_widget; world.get_widgets (grid_loc)) {
 		event.widget = cast (Widget*) _widget;
@@ -201,6 +205,7 @@ Event {
     AppEvent    app;
     World*      world;
     Widget*     widget;
+    Loc         loc;
 
     // if (event) ...
     bool opCast (T) () if (is (T == bool)) { return (type != Type._); }
@@ -216,17 +221,12 @@ Event {
 
 struct
 InputEvent {
-    Type type;
-    Loc  loc;
-
-    enum 
-    Type {
-        _,
-        POINTER,
-    }
+    impl.Event *_super;
+    alias _super this;
 
     // if (InputEvent) ...
     bool opCast (T) () if (is (T == bool)) { return (type != 0); }
+    void opAssign (impl.Event* b) { _super = b; }
 }
 
 struct
