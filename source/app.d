@@ -55,14 +55,12 @@ main () {
 	    	_widget.grid.max_loc = Grid.Loc (2,1);
 	    }
 	    
-	    SEE_FN
-	    widget_see = (event) {
-		    if (event.input.type == event.input.Type.POINTER_BUTTON) {
-		        writeln ("  poiner over widget: ", event.widget);
-		    }
-	    };
-
-	    (cast (Custom_Widget*) a).see = widget_see;
+	    (cast (Custom_Widget*) a).main =
+            (event) {
+                if (event.input.type == event.input.Type.POINTER_BUTTON) {
+                    writeln ("  poiner over widget: ", event.widget);
+                }
+            };
 
         Event base_event;
 
@@ -85,7 +83,7 @@ main () {
             base_event.input  = event;
             base_event.world  = world;
             base_event.widget = null;
-            see (world,&base_event);
+            _main (world,&base_event);
         }
 
 		//auto
@@ -103,7 +101,7 @@ main () {
 
 
 void
-see (World* world, Event* event) {
+_main (World* world, Event* event) {
 	event.world = world;
 
 	final
@@ -133,8 +131,8 @@ _pointer_button_event (World* world, Event* event) {
 		event.widget = cast (Widget*) _widget;
 
 		// callback
-		if (auto _widget_see = (cast (Custom_Widget*) _widget).see) {
-			_widget_see (event);
+		if (auto _widget_main = (cast (Custom_Widget*) _widget).main) {
+			_widget_main (event);
 		}
 	}    
 }
@@ -184,18 +182,15 @@ draw (wayland_ctx* ctx, uint* pixels /* xrgb8888 */) {
 //       MOTION : callback (event /* .widget */)
 //       BTN    : callback (event /* .widget */)
 
-alias SEE_FN = void function (Event* event);  // struct {void* _this; void* _cb;}
-
 struct
 Custom_Widget {
     world.Widget widget;
-    SEE_FN       see = &see_impl_default;
+    MAIN_FN      main = 
+        (Event* event) {
+            //
+        };
 
-    static
-    void
-    see_impl_default (Event* event) {
-        //
-    };
+    alias MAIN_FN = void function (Event* event);  // struct {void* _this; void* _cb;}
 }
 
 struct
