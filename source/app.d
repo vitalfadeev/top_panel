@@ -45,11 +45,11 @@ main () {
 	    auto c2 = world.containers ~= new Container (Container.Way.r, Container.Balance.c, Grid.Loc (Grid.L.max/3,0), Grid.Loc (Grid.L.max/3,1));
 	    auto c3 = world.containers ~= new Container (Container.Way.l, Container.Balance.r, Grid.Loc (Grid.L.max/3*2,0), Grid.Loc (Grid.L.max,1));
 
-	    auto a  = world.widgets ~= &(new Custom_Widget (Widget (c1, Grid.Len (1,1)))).widget;
-	    auto b  = world.widgets ~= &(new Custom_Widget (Widget (c1, Grid.Len (1,1)))).widget;
-	    auto c  = world.widgets ~= &(new Custom_Widget (Widget (c2, Grid.Len (1,1)))).widget;
-	    auto d  = world.widgets ~= &(new Custom_Widget (Widget (c3, Grid.Len (1,1)))).widget;
-	    auto e  = world.widgets ~= &(new Custom_Widget (Widget (c3, Grid.Len (1,1)))).widget;
+	    auto a  = c1.widgets ~= new Custom_Widget (Widget (c1, Grid.Len (1,1)));
+	    auto b  = c1.widgets ~= new Custom_Widget (Widget (c1, Grid.Len (1,1)));
+	    auto c  = c2.widgets ~= new Custom_Widget (Widget (c2, Grid.Len (1,1)));
+	    auto d  = c3.widgets ~= new Custom_Widget (Widget (c3, Grid.Len (1,1)));
+	    auto e  = c3.widgets ~= new Custom_Widget (Widget (c3, Grid.Len (1,1)));
 
 	    foreach (_widget; [b,c,d,e]) {
 	    	_widget.grid.min_loc = Grid.Loc (1,1);
@@ -106,7 +106,7 @@ Custom_World {
     alias _super this;
 
     MAIN_FN main = 
-        (Custom_World* _this, Event* event) {
+        (_this, event) {
             event.world = _this;
 
             final
@@ -118,7 +118,7 @@ Custom_World {
             }
         };
 
-    alias MAIN_FN = void function (Custom_World* _this, Event* event);
+    alias MAIN_FN = void function (typeof(this)* _this, Event* event);
 }
 
 
@@ -194,12 +194,14 @@ draw (wayland_ctx* ctx, uint* pixels /* xrgb8888 */) {
 struct
 Custom_Widget {
     world.Widget widget;
+    alias widget this;
+    
     MAIN_FN      main = 
         (_this, event) {
             //
         };
 
-    alias MAIN_FN = void function (Custom_Widget* _this, Event* event);  // struct {void* _this; void* _cb;}
+    alias MAIN_FN = void function (typeof(this)* _this, Event* event);  // struct {void* _this; void* _cb;}
 }
 
 struct
