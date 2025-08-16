@@ -38,18 +38,17 @@ main () {
 	{
 	    // init
         auto wayland = Wayland (640,480,&draw);        
-	    auto world = new Custom_World (
-            World (null,null,true, List!Container(null,null), List!Widget(null,null), Grid.Len (ubyte.max,ubyte.max)));  // ubyte.max = 255
+	    auto world = new Custom_World (World (Grid.Len (ubyte.max,ubyte.max)));  // ubyte.max = 255
 
-	    auto c1 = world.containers ~= new Container (Container.Way.r, Container.Balance.l, Grid.Loc (0,0), Grid.Loc (Grid.L.max/3,1));
-	    auto c2 = world.containers ~= new Container (Container.Way.r, Container.Balance.c, Grid.Loc (Grid.L.max/3,0), Grid.Loc (Grid.L.max/3,1));
-	    auto c3 = world.containers ~= new Container (Container.Way.l, Container.Balance.r, Grid.Loc (Grid.L.max/3*2,0), Grid.Loc (Grid.L.max,1));
+	    auto c1 = *world ~= new Container (Container.Way.r, Container.Balance.l, Grid.Loc (0,0), Grid.Loc (Grid.L.max/3,1));
+	    auto c2 = *world ~= new Container (Container.Way.r, Container.Balance.c, Grid.Loc (Grid.L.max/3,0), Grid.Loc (Grid.L.max/3,1));
+	    auto c3 = *world ~= new Container (Container.Way.l, Container.Balance.r, Grid.Loc (Grid.L.max/3*2,0), Grid.Loc (Grid.L.max,1));
 
-	    auto a  = c1.widgets ~= new Custom_Widget (Widget (c1, Grid.Len (1,1)));
-	    auto b  = c1.widgets ~= new Custom_Widget (Widget (c1, Grid.Len (1,1)));
-	    auto c  = c2.widgets ~= new Custom_Widget (Widget (c2, Grid.Len (1,1)));
-	    auto d  = c3.widgets ~= new Custom_Widget (Widget (c3, Grid.Len (1,1)));
-	    auto e  = c3.widgets ~= new Custom_Widget (Widget (c3, Grid.Len (1,1)));
+	    auto a  = *c1 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
+	    auto b  = *c1 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
+	    auto c  = *c2 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
+	    auto d  = *c3 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
+	    auto e  = *c3 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
 
 	    foreach (_widget; [b,c,d,e]) {
 	    	_widget.grid.min_loc = Grid.Loc (1,1);
@@ -117,6 +116,11 @@ Custom_World {
                 case Event.Type.WORLD : break;
             }
         };
+
+    T*
+    opOpAssign (string op : "~",T) (T* b) {
+        return _super.opOpAssign!"~" (b);
+    }
 
     alias MAIN_FN = void function (typeof(this)* _this, Event* event);
 }
