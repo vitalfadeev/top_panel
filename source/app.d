@@ -10,6 +10,10 @@ import loc;
 import wayland_struct;
 import impl;
 
+enum GRID_LEN_X   = 128;
+enum GRID_LEN_Y   = 128;
+enum WINDOW_LEN_X = 640;
+enum WINDOW_LEN_Y = 480;
 
 void 
 main () {
@@ -37,66 +41,88 @@ main () {
 
 	{
 	    // init
-        auto wayland = Wayland (640,480,&draw);        
-	    auto world = new Custom_World (World (Grid.Len (ubyte.max,ubyte.max)));  // ubyte.max = 255
+        auto wayland = Wayland (WINDOW_LEN_X,WINDOW_LEN_Y,&draw);
+	    auto world   = Custom_World (World (Grid.Len (GRID_LEN_X,GRID_LEN_Y)));  // ubyte.max = 255
 
-	    auto c1 = *world ~= new Container (Container.Way.r, Container.Balance.l, Grid.Loc (0,0), Grid.Loc (Grid.L.max/3,1));
-	    auto c2 = *world ~= new Container (Container.Way.r, Container.Balance.c, Grid.Loc (Grid.L.max/3,0), Grid.Loc (Grid.L.max/3,1));
-	    auto c3 = *world ~= new Container (Container.Way.l, Container.Balance.r, Grid.Loc (Grid.L.max/3*2,0), Grid.Loc (Grid.L.max,1));
+	    auto c1 = world ~= new Custom_Container (Container (Container.Way.r, Container.Balance.l, Grid.Loc (0,0),              Grid.Loc (Grid.L.max/3,1)));
+	    auto c2 = world ~= new Custom_Container (Container (Container.Way.r, Container.Balance.c, Grid.Loc (Grid.L.max/3,0),   Grid.Loc (Grid.L.max/3,1)));
+	    auto c3 = world ~= new Custom_Container (Container (Container.Way.l, Container.Balance.r, Grid.Loc (Grid.L.max/3*2,0), Grid.Loc (Grid.L.max,1)));
 
-	    auto a  = *c1 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
+	    auto a  = *c1 ~= new Custom_Widget (Widget (Grid.Len (100,100)));
 	    auto b  = *c1 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
 	    auto c  = *c2 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
 	    auto d  = *c3 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
 	    auto e  = *c3 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
 
-	    foreach (_widget; [b,c,d,e]) {
-	    	_widget.grid.min_loc = Grid.Loc (1,1);
-	    	_widget.grid.max_loc = Grid.Loc (2,1);
+	    foreach (_widget; [a]) {
+	    	_widget.grid.min_loc = Grid.Loc (0,0);
+	    	_widget.grid.max_loc = Grid.Loc (100,100);
 	    }
+        foreach (_widget; [b,c,d,e]) {
+            _widget.grid.min_loc = Grid.Loc (100,100);
+            _widget.grid.max_loc = Grid.Loc (101,101);
+        }
 	    
-	    (cast (Custom_Widget*) a).main =
+	    a.main =
             (_this,event) {
-                if (event.input.type == event.input.Type.POINTER_BUTTON) {
-                    writeln ("  poiner over widget: ", event.widget);
+                if (event.type == event.Type.INPUT)
+                if (event.input.type == event.input.Type.POINTER_MOTION) {
+                    writeln ("  poiner over widget: ", _this);
                 }
             };
 
-        Event base_event;
-
         // event loop
-        foreach (event; wayland.events) {
+        foreach (event; Events (&wayland)) {
+            writeln ();
             writeln (*event);
-            switch (event.type) {
-                case event.Type.POINTER_BUTTON: 
-                    if (event.pointer.button == BTN_LEFT)
-                        wayland.ctx.done = true;
-                    break;
-                case event.Type.KEYBOARD_KEY: 
-                    if (event.keyboard.key == KEY_ESC)
-                        wayland.ctx.done = true;
-                    break;
-                default:
-            }
-
-            base_event.type   = base_event.Type.INPUT;
-            base_event.input  = event;
-            base_event.world  = world;
-            base_event.widget = null;
-            world.main (world,&base_event);
+            world.main (&world,event);
         }
-
-		//auto
-		//events () {
-		//    return [
-		//    	Event (
-		//    		Event.Type.INPUT, 
-		//    		InputEvent (InputEvent.Type.POINTER), 
-		//    		AppEvent (),
-		//		),
-		//	];
-		//}
 	}
+}
+
+struct
+Events {
+    Wayland* wayland;
+    Event*   front;
+    Event    event;
+    impl.Events wayland_events;
+
+    this (Wayland* wayland) {
+        this.wayland =  wayland;
+        this.front   = &event;
+        this.wayland_events = wayland.events;
+    }
+
+    bool  
+    empty () {
+        auto ret = (wayland_events.empty);
+        if (!ret) {
+            event.type  = Event.type.INPUT;
+            event.input = *wayland_events.front;
+            check_exit ();
+        }
+        return ret;
+    }
+
+    void 
+    popFront () {
+        wayland_events.popFront ();
+    }    
+
+    void
+    check_exit () {
+        switch (event.input.type) {
+            case event.input.Type.POINTER_BUTTON: 
+                if (event.input.pointer.button == BTN_LEFT)
+                    wayland.ctx.done = true;
+                break;
+            case event.input.Type.KEYBOARD_KEY: 
+                if (event.input.keyboard.key == KEY_ESC)
+                    wayland.ctx.done = true;
+                break;
+            default:
+        }
+    }
 }
 
 struct
@@ -106,12 +132,14 @@ Custom_World {
 
     MAIN_FN main = 
         (_this, event) {
-            event.world = _this;
+            event.world  = _this;
+            event.widget =  null;
+            event.loc    =  Loc ();
 
             final
             switch (event.type) {
                 case Event.Type._     : break;
-                case Event.Type.INPUT : _input_event (_this,event); break;
+                case Event.Type.INPUT : _this._input_event (event); break;
                 case Event.Type.APP   : break;
                 case Event.Type.WORLD : break;
             }
@@ -123,32 +151,38 @@ Custom_World {
     }
 
     alias MAIN_FN = void function (typeof(this)* _this, Event* event);
+
+    void
+    _input_event (Event* event) {
+        switch (event.input.type) {
+            case event.input.Type.NONE           : break;
+            case event.input.Type.POINTER_BUTTON : break;
+            case event.input.Type.POINTER_MOTION : _pointer_motion_event (event); break;
+            default:
+        }
+    }
+
+    void 
+    _pointer_motion_event (Event* event) {
+        // find widget
+        event.loc     = Loc (event.input.pointer.x, event.input.pointer.y);
+        auto grid_loc = _loc_to_grid_loc (event.loc);  // from event
+
+        foreach (_widget; this.get_widgets (grid_loc)) {
+            event.widget = _widget;
+
+            // callback
+            if (auto _widget_main = (cast (Custom_Widget*) _widget).main) {
+                _widget_main (cast (Custom_Widget*) _widget,event);
+            }
+        }    
+    }
 }
 
 
-void
-_input_event (Custom_World* world, Event* event) {
-	switch (event.input.type) {
-		case InputEvent.Type.NONE           : break;
-		case InputEvent.Type.POINTER_BUTTON : _pointer_button_event (world,event); break;
-        default:
-	}
-}
 
-void 
-_pointer_button_event (Custom_World* world, Event* event) {
-	// find widget
-	auto grid_loc = _loc_to_grid_loc (event.loc);  // from event
+alias InputEvent = impl.Event;
 
-	foreach (_widget; world.get_widgets (grid_loc)) {
-		event.widget = cast (Widget*) _widget;
-
-		// callback
-		if (auto _widget_main = (cast (Custom_Widget*) _widget).main) {
-			_widget_main (cast (Custom_Widget*) _widget,event);
-		}
-	}    
-}
 
 void
 draw (wayland_ctx* ctx, uint* pixels /* xrgb8888 */) {
@@ -209,6 +243,19 @@ Custom_Widget {
 }
 
 struct
+Custom_Container {
+    world.Container container;
+    alias container this;
+    
+    MAIN_FN      main = 
+        (_this, event) {
+            //
+        };
+
+    alias MAIN_FN = void function (typeof(this)* _this, Event* event);  // struct {void* _this; void* _cb;}
+}
+
+struct
 Event {
 	Type 		  type;
     InputEvent    input;
@@ -229,15 +276,15 @@ Event {
 	}
 }
 
-struct
-InputEvent {
-    impl.Event *_super;
-    alias _super this;
+//struct
+//InputEvent {
+//    InputEvent *_super;
+//    alias _super this;
 
-    // if (InputEvent) ...
-    bool opCast (T) () if (is (T == bool)) { return (type != 0); }
-    void opAssign (impl.Event* b) { _super = b; }
-}
+//    // if (InputEvent) ...
+//    bool opCast (T) () if (is (T == bool)) { return (type != 0); }
+//    void opAssign (InputEvent* b) { _super = b; }
+//}
 
 struct
 AppEvent {
@@ -266,7 +313,10 @@ to (T,A) (A a) {
 
 Grid.Loc
 _loc_to_grid_loc (Loc) (Loc loc) {
-    return Grid.Loc ();
+    return Grid.Loc (
+        loc.x * GRID_LEN_X / WINDOW_LEN_X, 
+        loc.y * GRID_LEN_Y / WINDOW_LEN_Y
+    );
 }
 
 alias Len = TLen!L;
