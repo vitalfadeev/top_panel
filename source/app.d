@@ -226,6 +226,24 @@ Event {
     }
 }
 
+// events
+//   sources
+//   dispatch
+//     by_time
+//   front
+// events sources
+//   app
+//   input
+//   world
+// event
+//   source
+//   union
+//     app
+//     input
+//     world
+// source
+//   event[]
+
 struct
 AppEvent {
     Type type;
