@@ -81,51 +81,6 @@ main () {
 }
 
 struct
-Events {
-    Wayland* wayland;
-    Event*   front;
-    Event    event;
-    impl.Events wayland_events;
-
-    this (Wayland* wayland) {
-        this.wayland =  wayland;
-        this.front   = &event;
-        this.wayland_events = wayland.events;
-    }
-
-    bool  
-    empty () {
-        auto ret = (wayland_events.empty);
-        if (!ret) {
-            event.type  = Event.type.INPUT;
-            event.input = *wayland_events.front;
-            check_exit ();
-        }
-        return ret;
-    }
-
-    void 
-    popFront () {
-        wayland_events.popFront ();
-    }    
-
-    void
-    check_exit () {
-        switch (event.input.type) {
-            case event.input.Type.POINTER_BUTTON: 
-                if (event.input.pointer.button == BTN_LEFT)
-                    wayland.ctx.done = true;
-                break;
-            case event.input.Type.KEYBOARD_KEY: 
-                if (event.input.keyboard.key == KEY_ESC)
-                    wayland.ctx.done = true;
-                break;
-            default:
-        }
-    }
-}
-
-struct
 Custom_World {
     World _super;
     alias _super this;
@@ -179,10 +134,113 @@ Custom_World {
     }
 }
 
+struct
+Custom_Container {
+    world.Container container;
+    alias container this;
+    
+    MAIN_FN main = 
+        (_this, event) {
+            //
+        };
 
+    alias MAIN_FN = void function (typeof(this)* _this, Event* event);  // struct {void* _this; void* _cb;}
+}
+
+struct
+Custom_Widget {
+    world.Widget widget;
+    alias widget this;
+    
+    MAIN_FN main = 
+        (_this, event) {
+            //
+        };
+
+    alias MAIN_FN = void function (typeof(this)* _this, Event* event);  // struct {void* _this; void* _cb;}
+}
+
+struct
+Events {
+    Wayland* wayland;
+    Event*   front;
+    Event    event;
+    impl.Events wayland_events;
+
+    this (Wayland* wayland) {
+        this.wayland =  wayland;
+        this.front   = &event;
+        this.wayland_events = wayland.events;
+    }
+
+    bool  
+    empty () {
+        auto ret = (wayland_events.empty);
+        if (!ret) {
+            event.type  = Event.type.INPUT;
+            event.input = *wayland_events.front;
+            check_exit ();
+        }
+        return ret;
+    }
+
+    void 
+    popFront () {
+        wayland_events.popFront ();
+    }    
+
+    void
+    check_exit () {
+        switch (event.input.type) {
+            case event.input.Type.POINTER_BUTTON: 
+                if (event.input.pointer.button == BTN_LEFT)
+                    wayland.ctx.done = true;
+                break;
+            case event.input.Type.KEYBOARD_KEY: 
+                if (event.input.keyboard.key == KEY_ESC)
+                    wayland.ctx.done = true;
+                break;
+            default:
+        }
+    }
+}
+
+struct
+Event {
+    Type          type;
+    InputEvent    input;
+    AppEvent      app;
+    Custom_World* world;
+    Widget*       widget;
+    Loc           loc;
+
+    // if (event) ...
+    bool opCast (T) () if (is (T == bool)) { return (type != Type._); }
+
+    enum 
+    Type {
+        _,
+        INPUT,
+        APP,
+        WORLD,
+    }
+}
+
+struct
+AppEvent {
+    Type type;
+
+    enum 
+    Type {
+        _,
+        START,
+    }
+
+    // if (AppEvent) ...
+    bool opCast (T) () if (is (T == bool)) { return (type != 0); }
+}
 
 alias InputEvent = impl.Event;
-
 
 void
 draw (wayland_ctx* ctx, uint* pixels /* xrgb8888 */) {
@@ -229,76 +287,7 @@ draw (wayland_ctx* ctx, uint* pixels /* xrgb8888 */) {
 //       MOTION : callback (event /* .widget */)
 //       BTN    : callback (event /* .widget */)
 
-struct
-Custom_Widget {
-    world.Widget widget;
-    alias widget this;
-    
-    MAIN_FN      main = 
-        (_this, event) {
-            //
-        };
 
-    alias MAIN_FN = void function (typeof(this)* _this, Event* event);  // struct {void* _this; void* _cb;}
-}
-
-struct
-Custom_Container {
-    world.Container container;
-    alias container this;
-    
-    MAIN_FN      main = 
-        (_this, event) {
-            //
-        };
-
-    alias MAIN_FN = void function (typeof(this)* _this, Event* event);  // struct {void* _this; void* _cb;}
-}
-
-struct
-Event {
-	Type 		  type;
-    InputEvent    input;
-    AppEvent      app;
-    Custom_World* world;
-    Widget*       widget;
-    Loc           loc;
-
-    // if (event) ...
-    bool opCast (T) () if (is (T == bool)) { return (type != Type._); }
-
-	enum 
-	Type {
-	    _,
-	    INPUT,
-	    APP,
-	    WORLD,
-	}
-}
-
-//struct
-//InputEvent {
-//    InputEvent *_super;
-//    alias _super this;
-
-//    // if (InputEvent) ...
-//    bool opCast (T) () if (is (T == bool)) { return (type != 0); }
-//    void opAssign (InputEvent* b) { _super = b; }
-//}
-
-struct
-AppEvent {
-    Type type;
-
-    enum 
-    Type {
-        _,
-        START,
-    }
-
-    // if (AppEvent) ...
-    bool opCast (T) () if (is (T == bool)) { return (type != 0); }
-}
 
 auto
 to (T,A) (A a) {
