@@ -1,14 +1,17 @@
 import std.stdio;
 import std.conv;
-import e     : E,CanClick;
-import whats : Whats;
-import what  : What,AppEvent;
+//import e     : E,CanClick;
+//import whats : Whats;
+//import what  : What,AppEvent;
 import loop  : loop;
 import tree  : WalkTree,WalkChilds,childs;
 import world;
 import loc;
 import wayland_struct;
 import impl;
+import backend;
+import types;
+
 
 enum GRID_LEN_X   = 128;
 enum GRID_LEN_Y   = 128;
@@ -41,78 +44,86 @@ main () {
 
 	{
 	    // init
-        auto wayland = Wayland (WINDOW_LEN_X,WINDOW_LEN_Y,&draw);
-	    auto world   = Custom_World (World (Grid.Len (GRID_LEN_X,GRID_LEN_Y)));  // ubyte.max = 255
-
-	    auto c1 = world ~= new Custom_Container (Container (Container.Way.r, Container.Balance.l, Grid.Loc (0,0),              Grid.Loc (Grid.L.max/3,1)));
-	    auto c2 = world ~= new Custom_Container (Container (Container.Way.r, Container.Balance.c, Grid.Loc (Grid.L.max/3,0),   Grid.Loc (Grid.L.max/3,1)));
-	    auto c3 = world ~= new Custom_Container (Container (Container.Way.l, Container.Balance.r, Grid.Loc (Grid.L.max/3*2,0), Grid.Loc (Grid.L.max,1)));
-
-	    auto a  = *c1 ~= new Custom_Widget (Widget (Grid.Len (100,100)));
-	    auto b  = *c1 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
-	    auto c  = *c2 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
-	    auto d  = *c3 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
-	    auto e  = *c3 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
-
-	    foreach (_widget; [a]) {
-	    	_widget.grid.min_loc = Grid.Loc (0,0);
-	    	_widget.grid.max_loc = Grid.Loc (100,100);
-	    }
-        foreach (_widget; [b,c,d,e]) {
-            _widget.grid.min_loc = Grid.Loc (100,100);
-            _widget.grid.max_loc = Grid.Loc (101,101);
-        }
-	    
-	    a.main =
-            (_this,event) {
-                if (event.type == event.Type.INPUT)
-                if (event.input.type == event.input.Type.POINTER_MOTION) {
-                    writeln ("  poiner over widget: ", _this);
-                }
-            };
+        auto backend = Backend (Len (WINDOW_LEN_X,WINDOW_LEN_Y), &draw);
+        auto _video  = backend.video;
+        auto _input  = backend.input;
+        auto _draw   = backend.draw;
+	    auto world   = Custom_World (Grid.Len (GRID_LEN_X,GRID_LEN_Y));  // ubyte.max = 255
 
         // event loop
-        foreach (event; Events (&wayland)) {
+        foreach (ref event; backend.input) {
             writeln ();
-            writeln (*event);
-            world.main (&world,event);
+            writeln (event);
+            world.main (&world,&event);
         }
 	}
 }
+
 
 struct
 Custom_World {
     World _super;
     alias _super this;
 
-    MAIN_FN main = 
+    this (Grid.Len len) {
+        _super = World (len);
+
+        // world
+        auto c1 = this ~= new Custom_Container (Container (Container.Way.r, Container.Balance.l, Grid.Loc (0,0),              Grid.Loc (Grid.L.max/3,1)));
+        auto c2 = this ~= new Custom_Container (Container (Container.Way.r, Container.Balance.c, Grid.Loc (Grid.L.max/3,0),   Grid.Loc (Grid.L.max/3,1)));
+        auto c3 = this ~= new Custom_Container (Container (Container.Way.l, Container.Balance.r, Grid.Loc (Grid.L.max/3*2,0), Grid.Loc (Grid.L.max,1)));
+
+        auto a  = *c1 ~= new Custom_Widget (Widget (Grid.Len (100,100)));
+        auto b  = *c1 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
+        auto c  = *c2 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
+        auto d  = *c3 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
+        auto e  = *c3 ~= new Custom_Widget (Widget (Grid.Len (1,1)));
+
+        foreach (_widget; [a]) {
+            _widget.grid.min_loc = Grid.Loc (0,0);
+            _widget.grid.max_loc = Grid.Loc (100,100);
+        }
+        foreach (_widget; [b,c,d,e]) {
+            _widget.grid.min_loc = Grid.Loc (100,100);
+            _widget.grid.max_loc = Grid.Loc (101,101);
+        }
+        
+        a.main =
+            (_this,event) {
+                if (event.input_event.type == 1)
+                if (event.input_event.sources.inp.front.type == event.input_event.sources.inp.front.Type.POINTER_MOTION) {
+                    writeln ("  poiner over widget: ", _this);
+                }
+            };        
+    }
+
+    MAIN_FN 
+    main = 
         (_this, event) {
             event.world  = _this;
             event.widget =  null;
             event.loc    =  Loc ();
 
             final
-            switch (event.type) {
-                case Event.Type._     : break;
-                case Event.Type.INPUT : _this._input_event (event); break;
-                case Event.Type.APP   : break;
-                case Event.Type.WORLD : break;
+            switch (event.input_event.type) {
+                case 0 : break;
+                case 1 : _this._input_event (event); break;
             }
         };
+
+    alias MAIN_FN = void function (typeof(this)* _this, Event* event);
 
     T*
     opOpAssign (string op : "~",T) (T* b) {
         return _super.opOpAssign!"~" (b);
     }
 
-    alias MAIN_FN = void function (typeof(this)* _this, Event* event);
-
     void
     _input_event (Event* event) {
-        switch (event.input.type) {
-            case event.input.Type.NONE           : break;
-            case event.input.Type.POINTER_BUTTON : break;
-            case event.input.Type.POINTER_MOTION : _pointer_motion_event (event); break;
+        switch (event.input_event.sources.inp.front.type) {
+            case event.input_event.sources.inp.front.Type.NONE           : break;
+            case event.input_event.sources.inp.front.Type.POINTER_BUTTON : break;
+            case event.input_event.sources.inp.front.Type.POINTER_MOTION : _pointer_motion_event (event); break;
             default:
         }
     }
@@ -120,7 +131,9 @@ Custom_World {
     void 
     _pointer_motion_event (Event* event) {
         // find widget
-        event.loc     = Loc (event.input.pointer.x, event.input.pointer.y);
+        event.loc     = Loc (
+            event.input_event.sources.inp.front.pointer.x, 
+            event.input_event.sources.inp.front.pointer.y);
         auto grid_loc = _loc_to_grid_loc (event.loc);  // from event
 
         foreach (_widget; this.get_widgets (grid_loc)) {
@@ -160,70 +173,17 @@ Custom_Widget {
     alias MAIN_FN = void function (typeof(this)* _this, Event* event);  // struct {void* _this; void* _cb;}
 }
 
-struct
-Events {
-    Wayland* wayland;
-    Event*   front;
-    Event    event;
-    impl.Events wayland_events;
 
-    this (Wayland* wayland) {
-        this.wayland =  wayland;
-        this.front   = &event;
-        this.wayland_events = wayland.events;
-    }
-
-    bool  
-    empty () {
-        auto ret = (wayland_events.empty);
-        if (!ret) {
-            event.type  = Event.type.INPUT;
-            event.input = *wayland_events.front;
-            check_exit ();
-        }
-        return ret;
-    }
-
-    void 
-    popFront () {
-        wayland_events.popFront ();
-    }    
-
-    void
-    check_exit () {
-        switch (event.input.type) {
-            case event.input.Type.POINTER_BUTTON: 
-                if (event.input.pointer.button == BTN_LEFT)
-                    wayland.ctx.done = true;
-                break;
-            case event.input.Type.KEYBOARD_KEY: 
-                if (event.input.keyboard.key == KEY_ESC)
-                    wayland.ctx.done = true;
-                break;
-            default:
-        }
-    }
-}
 
 struct
 Event {
-    Type          type;
-    InputEvent    input;
-    AppEvent      app;
-    Custom_World* world;
-    Widget*       widget;
-    Loc           loc;
+    TEvents.Event* input_event;
+    Custom_World*  world;
+    Widget*        widget;
+    Loc            loc;
 
     // if (event) ...
     bool opCast (T) () if (is (T == bool)) { return (type != Type._); }
-
-    enum 
-    Type {
-        _,
-        INPUT,
-        APP,
-        WORLD,
-    }
 }
 
 // events
@@ -326,9 +286,6 @@ _loc_to_grid_loc (Loc) (Loc loc) {
     );
 }
 
-alias Len = TLen!L;
-alias Loc = TLoc!L;
-alias L   = int;
 
 
 version (NEVER) {
@@ -476,3 +433,28 @@ version (NEVER) {
 // DGUI
 // Tiny Core Linux
 
+// font
+//        3
+//     2        
+//           C  
+//     1  
+//
+//            ^
+//      3   --o--
+//            v
+//     2      |
+//          < o >
+//     1      |
+//            ^
+//          --o--
+//            v
+
+// TOP_PANEL
+// e root window
+//   e container left
+//     e button start
+//   e container center
+//     e button clock
+//   e container right
+//     e tray
+//     e button volume

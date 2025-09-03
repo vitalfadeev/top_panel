@@ -1,3 +1,4 @@
+version (NEVER):
 auto
 Whats () {
     import appinput : Events;

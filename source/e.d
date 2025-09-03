@@ -1,5 +1,6 @@
 module e;
 
+version (NEVER) :
 import see;
 import can;
 import tree;

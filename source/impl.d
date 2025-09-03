@@ -838,6 +838,27 @@ Events {
     empty () {
         front.type = Event.type.NONE;
 
+        with (wayland.ctx) {
+            auto n = wl_display.dispatch_pending ();
+            if (n < 0) {
+                printf ("loop: dispatch 1\n");
+                perror ("Main loop error");
+                done = true;
+                return done;
+            }
+            else {
+                return (n == 0);  // 0 - empty
+            }
+        }
+    }
+
+    void 
+    popFront () {
+        //
+    }
+
+    auto
+    _wait_event_on_device () {
         with (wayland.ctx)
         if (wl_display.dispatch () < 0) {
             printf ("loop: dispatch 1\n");
@@ -846,13 +867,8 @@ Events {
             return done;
         }
         else {
-            return done;
+            return done;  // false
         }
-    }
-
-    void 
-    popFront () {
-        //
     }
 }
 
@@ -860,6 +876,7 @@ struct
 Event {
     Type           type;
     wayland_ctx*   ctx;
+    Time           time;;
     Device_Event   device;
     Keyboard_Event keyboard;
     Pointer_Event  pointer;
@@ -1088,6 +1105,8 @@ Event {
         //
         SEAT_NAME,
         }
+
+    alias Time = ulong;
 }
 
 template 

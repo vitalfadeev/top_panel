@@ -12,13 +12,15 @@
 			"platforms"      : ["linux"],
 			"targetType"     : "executable",
 			"dependencies": {
-				"appinput"       : {"path":"deps/appinput"},
 				"loop"           : {"path":"deps/loop"},
 				"world"          : {"path":"deps/world"},
 				"loc"            : {"path":"deps/loc"},
 				"wayland_struct" : {"path":"deps/wayland_struct"},
+				"app_events"     : {"path":"deps/app_events"},
+				"events"         : {"path":"deps/events"},
 			},			
-			"versions"       : ["GL_AllowDeprecated", "GL_ES_2", "LIBINPUT"],
+			"versions"       : ["GL_AllowDeprecated", "GL_ES_2", "LIBINPUT",
+								"VIDEO_WAYLAND", "INPUT_WAYLAND"],
 			"dflags"         : ["-preview=dip1000"]
 		},
 	],

@@ -1,721 +1,721 @@
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4016,17)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4016,17)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4017,24)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4017,24)
 libinput_d
 
-// expansion at deps/appinput/deps/libinput_d/source/libinput_d.d(4023,1)
+// expansion at deps/events/deps/libinput_d/source/libinput_d.d(4023,1)
 
 mixin (makeExpandedEnum!libinput_log_priority);
 mixin (makeExpandedEnum!libinput_device_capability);
@@ -876,15 +876,6 @@ enum LIBINPUT_CONFIG_SCROLL_ON_BUTTON_DOWN = libinput_config_scroll_method.LIBIN
 enum LIBINPUT_CONFIG_DWT_DISABLED = libinput_config_dwt_state.LIBINPUT_CONFIG_DWT_DISABLED;
 enum LIBINPUT_CONFIG_DWT_ENABLED = libinput_config_dwt_state.LIBINPUT_CONFIG_DWT_ENABLED;
 
-// expansion at
-.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
-
-// expansion at
-.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
-
-// expansion at
-.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
-
 // expansion at /usr/include/dmd/phobos/std/format/spec.d(172,13)
 private ubyte _flDash_flZero_flSpace_flPlus_flHash_flEqual_flSeparator__bf;@property bool flDash() @safe pure nothrow @nogc const { return (_flDash_flZero_flSpace_flPlus_flHash_flEqual_flSeparator__bf & 1U) != 0;}
 @property void flDash(bool v) @safe pure nothrow @nogc { if (v) _flDash_flZero_flSpace_flPlus_flHash_flEqual_flSeparator__bf |= 1U;else _flDash_flZero_flSpace_flPlus_flHash_flEqual_flSeparator__bf &= cast(typeof(_flDash_flZero_flSpace_flPlus_flHash_flEqual_flSeparator__bf))(-1-cast(typeof(_flDash_flZero_flSpace_flPlus_flHash_flEqual_flSeparator__bf))1U);}
@@ -906,6 +897,15 @@ cast(T)a < cast(T) b
 
 // expansion at /usr/include/dmd/phobos/std/functional.d(455,16)
 cast(T)a < cast(T) b
+
+// expansion at
+.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
+
+// expansion at
+.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
+
+// expansion at
+.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
 
 // expansion at /usr/include/dmd/phobos/std/functional.d(225,13)
 alias a = __a ;
@@ -951,38 +951,6 @@ lhs == rhs
 
 // expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
 lhs == rhs
-
-// expansion at deps/appinput/source/appinput.d(141,5)
-enum Type : ushort {
-NONE = InpEvent.Type.NONE,
-DEVICE_ADDED = InpEvent.Type.DEVICE_ADDED,
-DEVICE_REMOVED = InpEvent.Type.DEVICE_REMOVED,
-KEYBOARD_KEY = InpEvent.Type.KEYBOARD_KEY,
-POINTER_MOTION = InpEvent.Type.POINTER_MOTION,
-POINTER_MOTION_ABSOLUTE = InpEvent.Type.POINTER_MOTION_ABSOLUTE,
-POINTER_BUTTON = InpEvent.Type.POINTER_BUTTON,
-POINTER_AXIS = InpEvent.Type.POINTER_AXIS,
-POINTER_AXIS_ = InpEvent.Type.POINTER_AXIS_,
-TOUCH_DOWN = InpEvent.Type.TOUCH_DOWN,
-TOUCH_UP = InpEvent.Type.TOUCH_UP,
-TOUCH_MOTION = InpEvent.Type.TOUCH_MOTION,
-TOUCH_CANCEL = InpEvent.Type.TOUCH_CANCEL,
-TABLET_TOOL_AXIS = InpEvent.Type.TABLET_TOOL_AXIS,
-TABLET_TOOL_PROXIMITY = InpEvent.Type.TABLET_TOOL_PROXIMITY,
-TABLET_TOOL_TIP = InpEvent.Type.TABLET_TOOL_TIP,
-TABLET_TOOL_BUTTON = InpEvent.Type.TABLET_TOOL_BUTTON,
-GESTURE_SWIPE_BEGIN = InpEvent.Type.GESTURE_SWIPE_BEGIN,
-GESTURE_SWIPE_UPDATE = InpEvent.Type.GESTURE_SWIPE_UPDATE,
-GESTURE_SWIPE_END = InpEvent.Type.GESTURE_SWIPE_END,
-GESTURE_PINCH_BEGIN = InpEvent.Type.GESTURE_PINCH_BEGIN,
-GESTURE_PINCH_UPDATE = InpEvent.Type.GESTURE_PINCH_UPDATE,
-GESTURE_PINCH_END = InpEvent.Type.GESTURE_PINCH_END,
-_ = AppEvent.Type._,
-APP = AppEvent.Type.APP,
-START = AppEvent.Type.START,
-GUI = AppEvent.Type.GUI,
-DRAW = AppEvent.Type.DRAW,
-}
 
 // expansion at source/impl.d(187,17)
 
@@ -1042,6 +1010,42 @@ DRAW = AppEvent.Type.DRAW,
 
 // expansion at /usr/include/dmd/druntime/import/object.d(4907,5)
 import imported = std.traits;
+
+// expansion at
+.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
+
+// expansion at
+.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
+
+// expansion at
+.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
+
+// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
+lhs == rhs
+
+// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
+lhs == rhs
+
+// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
+lhs < rhs
+
+// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
+lhs < rhs
+
+// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
+lhs == rhs
+
+// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
+lhs == rhs
+
+// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
+lhs < rhs
+
+// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
+lhs < rhs
+
+// expansion at
+.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
 
 // expansion at
 .object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
@@ -1134,34 +1138,4 @@ a == b
 
 // expansion at
 .object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
-
-// expansion at
-.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
-
-// expansion at
-.object.size_t h = 0;foreach (i, T; typeof(p.tupleof))    static if(is(T* : const(.object.Object)*))         h = h * 33 + typeid(const(.object.Object)).getHash(cast(const void*)&p.tupleof[i]);    else         h = h * 33 + typeid(T).getHash(cast(const void*)&p.tupleof[i]);return h;
-
-// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
-lhs == rhs
-
-// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
-lhs == rhs
-
-// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
-lhs < rhs
-
-// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
-lhs < rhs
-
-// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
-lhs == rhs
-
-// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
-lhs == rhs
-
-// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
-lhs < rhs
-
-// expansion at /usr/include/dmd/phobos/std/typecons.d(526,31)
-lhs < rhs
 
