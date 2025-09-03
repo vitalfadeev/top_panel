@@ -11,6 +11,7 @@ import wayland_struct;
 import impl;
 import backend;
 import types;
+import std.traits : ReturnType;
 
 
 enum GRID_LEN_X   = 128;
@@ -32,33 +33,155 @@ main () {
 	// tree in ray
 	// e top_panel, e left, e icon 1, e center, e icon2, e right, e icon 3
 	// <- | ->
-	version (NEVER)
-	{
-		// tree
-		auto main_e = new Main ();
+    Main().go();
+}
 
-		// main loop
-		auto whats = Whats ();
-		loop (whats,&main_e.see);
-	}
 
-	{
-	    // init
-        auto backend = Backend (Len (WINDOW_LEN_X,WINDOW_LEN_Y), &draw);
+struct
+Main {
+    ReturnType!Backend backend;
+    Custom_World       world;
+
+    void
+    _init () {
+        auto backend = Backend (Len (WINDOW_LEN_X,WINDOW_LEN_Y), &world.draw);
         auto _video  = backend.video;
         auto _input  = backend.input;
         auto _draw   = backend.draw;
-	    auto world   = Custom_World (Grid.Len (GRID_LEN_X,GRID_LEN_Y));  // ubyte.max = 255
+        auto world   = Custom_World (Grid.Len (GRID_LEN_X,GRID_LEN_Y));  // ubyte.max = 255
+    }
 
-        // event loop
+    void
+    go () {
+        _init ();
+        loop ();
+    }
+
+    void
+    loop () {
         foreach (ref event; backend.input) {
             writeln ();
             writeln (event);
             world.main (&world,&event);
         }
-	}
+    }
 }
 
+// Vid
+//   Vid
+//     Vid
+// e
+//   e
+//     e klass_1 klass_2
+struct
+Vid {
+    // enable     - Walk able
+    bool   able;
+    // left right - DList
+    Vid*   l;
+    Vid*   r;
+    // in         - DList container
+    Vid*   in_l;
+    Vid*   in_r;
+    // out
+    Vid*   outer;
+
+    // grid
+    Len    grid_len;
+    // loc len
+    Loc    loc;
+    Len    len;
+
+    // klasses     - DList
+    Klass* klass_l;
+    Klass* klass_r;
+
+    // inp
+    INP_FN
+    inp = 
+        (_this,ctx) {
+            // klass_1.inp ()
+            // klass_2.inp ()
+        };
+
+    // vid
+    VID_FN
+    vid = 
+        (_this,ctx,pixels) {
+            // klass_1.vid ()
+            // klass_2.vid ()
+        };
+
+    alias INP_FN = void function (typeof(this)* _this, Context* ctx);
+    alias VID_FN = void function (typeof(this)* _this, Context* ctx, Pixels* pixels);
+}
+
+struct
+Klass {
+    // DList
+    Klass* l;
+    Klass* r;
+
+    // inp
+    INP_FN
+    inp = 
+        (_this,ctx) {
+            // ctx.inp
+        };
+
+    // vid
+    VID_FN
+    vid = 
+        (_this,ctx,pixels) {
+            //
+        };
+
+    alias INP_FN = void function (typeof(this)* _this, Context* ctx);
+    alias VID_FN = void function (typeof(this)* _this, Context* ctx, Pixels* pixels);
+}
+
+struct
+Context {
+    Input  input;
+    Vid*   vid;
+
+    this (ARGS...) (ARGS args) {
+        _init ();
+        _loop ();
+    }
+
+    void
+    _init () {
+        vid = new Vid ();
+    }
+
+    void
+    _loop () {
+        while (input) {
+            writeln ();
+            writeln (input.event);
+            vid.inp (vid,&this);
+        }
+    }
+}
+
+struct
+Input {
+    Event event;
+
+    bool
+    opCall () {
+        // poll  event
+        // read  event
+        // check for quit
+        return true;
+    }
+
+    struct
+    Event {
+        //
+    }
+}
 
 struct
 Custom_World {
@@ -145,6 +268,26 @@ Custom_World {
             }
         }    
     }
+
+    static
+    void
+    draw (wayland_ctx* ctx, uint* pixels /* xrgb8888 */) {
+        // go to World elements
+        // .each
+        //   .draw (pixels)
+
+        // Draw checkerboxed background
+        with (ctx) {
+            for (int y = 0; y < height; ++y) {
+                for (int x = 0; x < width; ++x) {
+                    if ((x + y / 32 * 32) % 64 < 32)
+                        pixels[y * width + x] = 0xFF666666;
+                    else
+                        pixels[y * width + x] = 0xFFEEEEEE;
+                }
+            }
+        }
+    }
 }
 
 struct
@@ -152,7 +295,8 @@ Custom_Container {
     world.Container container;
     alias container this;
     
-    MAIN_FN main = 
+    MAIN_FN 
+    main = 
         (_this, event) {
             //
         };
@@ -165,7 +309,8 @@ Custom_Widget {
     world.Widget widget;
     alias widget this;
     
-    MAIN_FN main = 
+    MAIN_FN 
+    main = 
         (_this, event) {
             //
         };
@@ -177,13 +322,24 @@ Custom_Widget {
 
 struct
 Event {
+    // input
     TEvents.Event* input_event;
+    void*          _device;
+    Loc            _loc;
+    // video
+    Window*        window;
+    // world
     Custom_World*  world;
+    Container*     container;
     Widget*        widget;
-    Loc            loc;
 
     // if (event) ...
     bool opCast (T) () if (is (T == bool)) { return (type != Type._); }
+}
+
+struct
+Window {
+    //
 }
 
 // events
@@ -220,20 +376,6 @@ AppEvent {
 
 alias InputEvent = impl.Event;
 
-void
-draw (wayland_ctx* ctx, uint* pixels /* xrgb8888 */) {
-    // Draw checkerboxed background
-    with (ctx) {
-        for (int y = 0; y < height; ++y) {
-            for (int x = 0; x < width; ++x) {
-                if ((x + y / 32 * 32) % 64 < 32)
-                    pixels[y * width + x] = 0xFF666666;
-                else
-                    pixels[y * width + x] = 0xFFEEEEEE;
-            }
-        }
-    }
-}
 
 // loop
 //                     === app ====
